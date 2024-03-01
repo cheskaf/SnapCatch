@@ -14,4 +14,14 @@ router.get('/test', (req, res) => {
     res.sendFile(path.join(__dirname, '..', '..', 'client', 'public', 'test.html'));
 });
 
+router.get('/page-1', (req, res) => {
+    // Send index.html file
+    res.sendFile(path.join(__dirname, '..', '..', 'client', 'public', 'page-1.html'));
+});
+
+router.get('/page-2', (req, res) => {
+    // Send index.html file
+    res.sendFile(path.join(__dirname, '..', '..', 'client', 'public', 'page-2.html'));
+});
+
 module.exports = router;
