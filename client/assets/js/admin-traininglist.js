@@ -1,16 +1,13 @@
-/* 
- * trainingList.js
+/*
+ * admin-registrations.js
  *
- * This file contains the client-side JavaScript code for the User - Training List page. 
- *
+ * This file contains the JavaScript code for the admin registration page.
  *
  */
-
 
 const spAuth = require('node-sp-auth');
 const spRequest = require('sp-request');
 const requestPromise = require('request-promise');
-
 // Function to fetch data from the Training List
 async function fetchTrainingListData(siteUrl, credentials, trainingListTitle) {
     try {
@@ -33,25 +30,10 @@ async function fetchTrainingListData(siteUrl, credentials, trainingListTitle) {
     }
 }
 
-// Function to generate unique URLs for each item with query parameters
-function generateUniqueUrls(data) {
-    data.d.results.forEach(item => {
-        // Encode each attribute separately
-        const encodedID = encodeURIComponent(item.ID);
-        const encodedTitle = encodeURIComponent(item.Title);
-        const encodedDateFrom = encodeURIComponent(item.DateFrom);
-        const encodedDateTo = encodeURIComponent(item.DateTo);
-        const encodedLocation = encodeURIComponent(item.Location);
-        // Construct the unique URL with query parameters
-        item.uniqueUrl = `/register?id=${encodedID}&title=${encodedTitle}&dateFrom=${encodedDateFrom}&dateTo=${encodedDateTo}&location=${encodedLocation}`;
-    });
-}
-
 // Function to initialize training list data
 async function initializeTrainingListData(siteUrl, credentials, trainingListTitle) {
     try {
         const trainingListData = await fetchTrainingListData(siteUrl, credentials, trainingListTitle);
-        generateUniqueUrls(trainingListData);
         return trainingListData;
     } catch (error) {
         throw error;
@@ -68,7 +50,6 @@ function formatDate(dateString) {
 
 module.exports = {
     fetchTrainingListData,
-    generateUniqueUrls,
     initializeTrainingListData,
     formatDate
 };

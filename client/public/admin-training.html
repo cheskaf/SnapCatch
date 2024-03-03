@@ -36,13 +36,31 @@
     <link rel="stylesheet" href="vendor/fonts/flag-icons.css" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="vendor/css/rtl/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link
+      rel="stylesheet"
+      href="vendor/css/rtl/core.css"
+      class="template-customizer-core-css"
+    />
+    <link
+      rel="stylesheet"
+      href="vendor/css/rtl/theme-default.css"
+      class="template-customizer-theme-css"
+    />
     <link rel="stylesheet" href="css/demo.css" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link
+      rel="stylesheet"
+      href="vendor/libs/perfect-scrollbar/perfect-scrollbar.css"
+    />
     <link rel="stylesheet" href="vendor/libs/node-waves/node-waves.css" />
+    <link rel="stylesheet" href="vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
+    <link rel="stylesheet" href="vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+    <link rel="stylesheet" href="vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
+    <link rel="stylesheet" href="vendor/libs/select2/select2.css" />
+    <link rel="stylesheet" href="vendor/libs/formvalidation/dist/css/formValidation.min.css" />
+
 
     <!-- Page CSS -->
 
@@ -62,11 +80,20 @@
       <div class="layout-container">
         <!-- Menu -->
 
-        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+        <aside
+          id="layout-menu"
+          class="layout-menu menu-vertical menu bg-menu-theme"
+        >
           <div class="app-brand demo">
-            <a href="page-1" class="app-brand-link">
+            <a href="index.html" class="app-brand-link">
               <span class="app-brand-logo demo">
-                <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="32"
+                  height="22"
+                  viewBox="0 0 32 22"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fill-rule="evenodd"
                     clip-rule="evenodd"
@@ -98,8 +125,13 @@
               <span class="app-brand-text demo menu-text fw-bold">SnapCatch</span>
             </a>
 
-            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
-              <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
+            <a
+              href="javascript:void(0);"
+              class="layout-menu-toggle menu-link text-large ms-auto"
+            >
+              <i
+                class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"
+              ></i>
               <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
             </a>
           </div>
@@ -132,15 +164,26 @@
             class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
             id="layout-navbar"
           >
-            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+            <div
+              class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none"
+            >
+              <a
+                class="nav-item nav-link px-0 me-xl-4"
+                href="javascript:void(0)"
+              >
                 <i class="ti ti-menu-2 ti-sm"></i>
               </a>
             </div>
 
-            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+            <div
+              class="navbar-nav-right d-flex align-items-center"
+              id="navbar-collapse"
+            >
               <div class="navbar-nav align-items-center">
-                <a class="nav-link style-switcher-toggle hide-arrow" href="javascript:void(0);">
+                <a
+                  class="nav-link style-switcher-toggle hide-arrow"
+                  href="javascript:void(0);"
+                >
                   <i class="ti ti-sm"></i>
                 </a>
               </div>
@@ -148,9 +191,17 @@
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                  <a
+                    class="nav-link dropdown-toggle hide-arrow"
+                    href="javascript:void(0);"
+                    data-bs-toggle="dropdown"
+                  >
                     <div class="avatar avatar-online">
-                      <img src="img/avatars/1.png" alt class="h-auto rounded-circle" />
+                      <img
+                        src="img/avatars/1.png"
+                        alt
+                        class="h-auto rounded-circle"
+                      />
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -159,7 +210,11 @@
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="img/avatars/1.png" alt class="h-auto rounded-circle" />
+                              <img
+                                src="img/avatars/1.png"
+                                alt
+                                class="h-auto rounded-circle"
+                              />
                             </div>
                           </div>
                           <div class="flex-grow-1">
@@ -174,25 +229,8 @@
                     </li>
                     <li>
                       <a class="dropdown-item" href="#">
-                        <i class="ti ti-user-check me-2 ti-sm"></i>
-                        <span class="align-middle">My Profile</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
                         <i class="ti ti-settings me-2 ti-sm"></i>
                         <span class="align-middle">Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 ti ti-credit-card me-2 ti-sm"></i>
-                          <span class="flex-grow-1 align-middle">Billing</span>
-                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-label-danger w-px-20 h-px-20"
-                            >2</span
-                          >
-                        </span>
                       </a>
                     </li>
                     <li>
@@ -218,17 +256,486 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4">Page 2</h4>
-
-              <p>
-                Sample page.<br />For more layout options refer
-                <a
-                  href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/documentation//layouts.html"
-                  target="_blank"
-                  class="fw-bold"
-                  >Layout docs</a
-                >.
-              </p>
+              <!--<div class="row g-4 mb-4">
+              <div class="col-sm-6 col-xl-3">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex align-items-start justify-content-between">
+                      <div class="content-left">
+                        <span>Session</span>
+                        <div class="d-flex align-items-center my-1">
+                          <h4 class="mb-0 me-2">21,459</h4>
+                          <span class="text-success">(+29%)</span>
+                        </div>
+                        <span>Total Users</span>
+                      </div>
+                      <span class="badge bg-label-primary rounded p-2">
+                        <i class="ti ti-user ti-sm"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex align-items-start justify-content-between">
+                      <div class="content-left">
+                        <span>Paid Users</span>
+                        <div class="d-flex align-items-center my-1">
+                          <h4 class="mb-0 me-2">4,567</h4>
+                          <span class="text-success">(+18%)</span>
+                        </div>
+                        <span>Last week analytics </span>
+                      </div>
+                      <span class="badge bg-label-danger rounded p-2">
+                        <i class="ti ti-user-plus ti-sm"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex align-items-start justify-content-between">
+                      <div class="content-left">
+                        <span>Active Users</span>
+                        <div class="d-flex align-items-center my-1">
+                          <h4 class="mb-0 me-2">19,860</h4>
+                          <span class="text-danger">(-14%)</span>
+                        </div>
+                        <span>Last week analytics</span>
+                      </div>
+                      <span class="badge bg-label-success rounded p-2">
+                        <i class="ti ti-user-check ti-sm"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex align-items-start justify-content-between">
+                      <div class="content-left">
+                        <span>Pending Users</span>
+                        <div class="d-flex align-items-center my-1">
+                          <h4 class="mb-0 me-2">237</h4>
+                          <span class="text-success">(+42%)</span>
+                        </div>
+                        <span>Last week analytics</span>
+                      </div>
+                      <span class="badge bg-label-warning rounded p-2">
+                        <i class="ti ti-user-exclamation ti-sm"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>-->
+              <!-- Users List Table -->
+              <div class="card">
+                <div class="card-header border-bottom">
+                  <h5 class="card-title mb-0">Manage Trainings</h5>
+                </div>
+                <div class="card-datatable table-responsive">
+                  <div
+                    id="DataTables_Table_0_wrapper"
+                    class="dataTables_wrapper dt-bootstrap5 no-footer"
+                  >
+                    <div class="row me-2">
+                      <div class="col-md-2">
+                        <div class="me-3">
+                          <div
+                            class="dataTables_length"
+                            id="DataTables_Table_0_length"
+                          >
+                            <label>
+                              <select
+                                name="DataTables_Table_0_length"
+                                aria-controls="DataTables_Table_0"
+                                class="form-select"
+                              >
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                              </select>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-10">
+                        <div
+                          class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0"
+                        >
+                          <div
+                            id="DataTables_Table_0_filter"
+                            class="dataTables_filter"
+                          >
+                            <label
+                              ><input
+                                type="search"
+                                class="form-control me-0 me-md-3"
+                                placeholder="Search.."
+                                aria-controls="DataTables_Table_0"
+                            /></label>
+                          </div>
+                          <div class="dt-buttons">
+                            <button
+                              class="dt-button add-new btn btn-primary"
+                              tabindex="0"
+                              aria-controls="DataTables_Table_0"
+                              type="button"
+                              data-bs-toggle="offcanvas"
+                              data-bs-target="#offcanvasAddUser"
+                            >
+                              <span
+                                ><i class="ti ti-plus me-0 me-sm-1 ti-xs"></i
+                                ><span class="d-none d-sm-inline-block"
+                                  >New Training</span
+                                ></span
+                              >
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <table
+                      class="datatables-users table border-top dataTable no-footer dtr-column"
+                      id="DataTables_Table_0"
+                      aria-describedby="DataTables_Table_0_info"
+                      style="width: 1231px"
+                    >
+                      <thead>
+                        <tr>
+                          <th
+                            class="control sorting_disabled dtr-hidden"
+                            rowspan="1"
+                            colspan="1"
+                            style="width: 0px; display: none"
+                            aria-label=""
+                          ></th>
+                          <th
+                            class="sorting sorting_asc"
+                            tabindex="0"
+                            aria-controls="DataTables_Table_0"
+                            rowspan="1"
+                            colspan="1"
+                            style="width: 145px"
+                            aria-label="User: activate to sort column descending"
+                            aria-sort="ascending"
+                          >
+                            Title
+                          </th>
+                          <th
+                            class="sorting"
+                            tabindex="0"
+                            aria-controls="DataTables_Table_0"
+                            rowspan="1"
+                            colspan="1"
+                            style="width: 145px"
+                            aria-label="Role: activate to sort column ascending"
+                          >
+                            Location
+                          </th>
+                          <th
+                            class="sorting"
+                            tabindex="0"
+                            aria-controls="DataTables_Table_0"
+                            rowspan="1"
+                            colspan="1"
+                            style="width: 130px"
+                            aria-label="Plan: activate to sort column ascending"
+                          >
+                            Start Date
+                          </th>
+                          <th
+                            class="sorting"
+                            tabindex="0"
+                            aria-controls="DataTables_Table_0"
+                            rowspan="1"
+                            colspan="1"
+                            style="width: 130px"
+                            aria-label="Plan: activate to sort column ascending"
+                          >
+                            End Date
+                          </th>
+                          <th
+                            class="sorting_disabled"
+                            rowspan="1"
+                            colspan="1"
+                            style="width: 80px"
+                            aria-label="Actions"
+                          >
+                            Actions
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% trainingListData.d.results.forEach(item => { %>
+                        <tr>
+                          <td
+                            class="control dtr-hidden"
+                            style="display: none"
+                            tabindex="0"
+                          ></td>
+                          <td class="sorting_1">
+                            <div
+                              class="d-flex justify-content-start align-items-center user-name"
+                            >
+                              <div class="avatar-wrapper">
+                                <div class="avatar avatar-sm me-3">
+                                  <span
+                                    class="avatar-initial rounded-circle bg-label-primary"
+                                    ><%= item.initials %></span
+                                  >
+                                </div>
+                              </div>
+                              <div class="d-flex flex-column">
+                                <a
+                                  href="app-user-view-account.html"
+                                  class="text-body text-truncate"
+                                  ><span class="fw-semibold"
+                                    ><%= item.Title %></span
+                                  ></a
+                                >
+                              </div>
+                            </div>
+                          </td>
+                          <td><%= item.Location %></td>
+                          <td><%= item.formattedDateFrom %></td>
+                          <td><%= item.formattedDateTo %></td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <a href="javascript:;" class="text-body"
+                                ><i class="ti ti-edit ti-sm me-2"></i></a
+                              ><a
+                                href="javascript:;"
+                                class="text-body delete-record"
+                                ><i class="ti ti-trash ti-sm mx-2"></i></a
+                              ><a
+                                href="javascript:;"
+                                class="text-body dropdown-toggle hide-arrow"
+                                data-bs-toggle="dropdown"
+                                ><i class="ti ti-dots-vertical ti-sm mx-1"></i
+                              ></a>
+                              <div class="dropdown-menu dropdown-menu-end m-0">
+                                <a
+                                  href="app-user-view-account.html"
+                                  class="dropdown-item"
+                                  >View</a
+                                ><a href="javascript:;" class="dropdown-item"
+                                  >Suspend</a
+                                >
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <% }); %>
+                      </tbody>
+                    </table>
+                    <div class="row mx-2">
+                      <div class="col-sm-12 col-md-6">
+                        <div
+                          class="dataTables_info"
+                          id="DataTables_Table_0_info"
+                          role="status"
+                          aria-live="polite"
+                        >
+                          Showing 1 to 10 of 49 entries
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-6">
+                        <div
+                          class="dataTables_paginate paging_simple_numbers"
+                          id="DataTables_Table_0_paginate"
+                        >
+                          <ul class="pagination">
+                            <li
+                              class="paginate_button page-item previous disabled"
+                              id="DataTables_Table_0_previous"
+                            >
+                              <a
+                                href="#"
+                                aria-controls="DataTables_Table_0"
+                                data-dt-idx="0"
+                                tabindex="0"
+                                class="page-link"
+                                >Previous</a
+                              >
+                            </li>
+                            <li class="paginate_button page-item active">
+                              <a
+                                href="#"
+                                aria-controls="DataTables_Table_0"
+                                data-dt-idx="1"
+                                tabindex="0"
+                                class="page-link"
+                                >1</a
+                              >
+                            </li>
+                            <li class="paginate_button page-item">
+                              <a
+                                href="#"
+                                aria-controls="DataTables_Table_0"
+                                data-dt-idx="2"
+                                tabindex="0"
+                                class="page-link"
+                                >2</a
+                              >
+                            </li>
+                            <li class="paginate_button page-item">
+                              <a
+                                href="#"
+                                aria-controls="DataTables_Table_0"
+                                data-dt-idx="3"
+                                tabindex="0"
+                                class="page-link"
+                                >3</a
+                              >
+                            </li>
+                            <li class="paginate_button page-item">
+                              <a
+                                href="#"
+                                aria-controls="DataTables_Table_0"
+                                data-dt-idx="4"
+                                tabindex="0"
+                                class="page-link"
+                                >4</a
+                              >
+                            </li>
+                            <li class="paginate_button page-item">
+                              <a
+                                href="#"
+                                aria-controls="DataTables_Table_0"
+                                data-dt-idx="5"
+                                tabindex="0"
+                                class="page-link"
+                                >5</a
+                              >
+                            </li>
+                            <li
+                              class="paginate_button page-item next"
+                              id="DataTables_Table_0_next"
+                            >
+                              <a
+                                href="#"
+                                aria-controls="DataTables_Table_0"
+                                data-dt-idx="6"
+                                tabindex="0"
+                                class="page-link"
+                                >Next</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Offcanvas to add new user -->
+                <div
+                  class="offcanvas offcanvas-end"
+                  tabindex="-1"
+                  id="offcanvasAddUser"
+                  aria-labelledby="offcanvasAddUserLabel"
+                >
+                  <div class="offcanvas-header">
+                    <h5 id="offcanvasAddUserLabel" class="offcanvas-title">
+                      Add Training
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close text-reset"
+                      data-bs-dismiss="offcanvas"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="offcanvas-body mx-0 flex-grow-0 pt-0 h-100">
+                    <form
+                      class="add-new-user pt-0 fv-plugins-bootstrap5 fv-plugins-framework"
+                      id="addNewUserForm"
+                      onsubmit="return false"
+                      novalidate="novalidate"
+                    >
+                      <div class="mb-3 fv-plugins-icon-container">
+                        <label class="form-label" for="title"
+                          >Title</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="title"
+                          placeholder="XYZ Training"
+                          name="userFullname"
+                          aria-label="XYZ Training"
+                        />
+                        <div
+                          class="fv-plugins-message-container invalid-feedback"
+                        ></div>
+                      </div>
+                      <div class="mb-3 fv-plugins-icon-container">
+                        <label class="form-label" for="location"
+                          >Location</label
+                        >
+                        <input
+                          type="text"
+                          id="location"
+                          class="form-control"
+                          placeholder="Virtual - MS Teams"
+                          aria-label="john.doe@example.com"
+                          name="location"
+                        />
+                        <div
+                          class="fv-plugins-message-container invalid-feedback"
+                        ></div>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="dateFrom"
+                          >Start Date</label
+                        >
+                        <input
+                          type="date"
+                          id="dateFrom"
+                          class="form-control"
+                          placeholder="January 1, 2024"
+                          aria-label="January 1, 2024"
+                          name="dateFrom"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="dateTo"
+                          >End Date</label
+                        >
+                        <input
+                          type="date"
+                          id="dateTo"
+                          class="form-control"
+                          placeholder="January 3, 2024"
+                          aria-label="January 3, 2024"
+                          name="dateTo"
+                        />
+                      </div>
+                      <button
+                        type="submit"
+                        class="btn btn-primary me-sm-3 me-1 data-submit waves-effect waves-light"
+                      >
+                        Submit
+                      </button>
+                      <button
+                        type="reset"
+                        class="btn btn-label-secondary waves-effect"
+                        data-bs-dismiss="offcanvas"
+                      >
+                        Cancel
+                      </button>
+                      <input type="hidden" />
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
             <!-- / Content -->
 
@@ -243,15 +750,7 @@
                     <script>
                       document.write(new Date().getFullYear());
                     </script>
-                    , made with ❤️ by <a href="https://pixinvent.com" target="_blank" class="fw-semibold">Pixinvent</a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/documentation/"
-                      target="_blank"
-                      class="footer-link me-4"
-                      >Documentation</a
-                    >
+                    SnapCatch
                   </div>
                 </div>
               </div>
@@ -282,15 +781,35 @@
     <script src="vendor/libs/node-waves/node-waves.js"></script>
 
     <script src="vendor/libs/hammer/hammer.js"></script>
+    <script src="vendor/libs/i18n/i18n.js"></script>
+    <script src="vendor/libs/typeahead-js/typeahead.js"></script>
 
     <script src="vendor/js/menu.js"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
+    <script src="vendor/libs/moment/moment.js"></script>
+    <script src="vendor/libs/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+    <script src="vendor/libs/datatables-responsive/datatables.responsive.js"></script>
+    <script src="vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.js"></script>
+    <script src="vendor/libs/datatables-buttons/datatables-buttons.js"></script>
+    <script src="vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.js"></script>
+    <script src="vendor/libs/jszip/jszip.js"></script>
+    <script src="vendor/libs/pdfmake/pdfmake.js"></script>
+    <script src="vendor/libs/datatables-buttons/buttons.html5.js"></script>
+    <script src="vendor/libs/datatables-buttons/buttons.print.js"></script>
+    <script src="vendor/libs/select2/select2.js"></script>
+    <script src="vendor/libs/formvalidation/dist/js/FormValidation.min.js"></script>
+    <script src="vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
+    <script src="vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js"></script>
+    <script src="vendor/libs/cleavejs/cleave.js"></script>
+    <script src="vendor/libs/cleavejs/cleave-phone.js"></script>
 
     <!-- Main JS -->
     <script src="js/main.js"></script>
 
-    <!-- Page JS -->
+    <!-- Page JS 
+  <script src="js/app-user-list.js"></script>-->
   </body>
 </html>

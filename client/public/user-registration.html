@@ -62,12 +62,21 @@
       <div class="layout-container">
         <!-- Navbar -->
 
-        <nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
+        <nav
+          class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme"
+          id="layout-navbar"
+        >
           <div class="container-xxl">
             <div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-4">
               <a href="trainings" class="app-brand-link gap-2">
                 <span class="app-brand-logo demo">
-                  <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg
+                    width="32"
+                    height="22"
+                    viewBox="0 0 32 22"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <path
                       fill-rule="evenodd"
                       clip-rule="evenodd"
@@ -99,86 +108,38 @@
                 <span class="app-brand-text demo menu-text fw-bold">SnapCatch</span>
               </a>
 
-              <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
+              <a
+                href="javascript:void(0);"
+                class="layout-menu-toggle menu-link text-large ms-auto d-xl-none"
+              >
                 <i class="ti ti-x ti-sm align-middle"></i>
               </a>
             </div>
 
-            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+            <div
+              class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none"
+            >
+              <a
+                class="nav-item nav-link px-0 me-xl-4"
+                href="javascript:void(0)"
+              >
                 <i class="ti ti-menu-2 ti-sm"></i>
               </a>
             </div>
 
-            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-              <div class="navbar-nav align-items-center">
-                <a class="nav-link style-switcher-toggle hide-arrow" href="javascript:void(0);">
-                  <i class="ti ti-sm"></i>
-                </a>
-              </div>
-
+            <div
+              class="navbar-nav-right d-flex align-items-center"
+              id="navbar-collapse"
+            >
               <ul class="navbar-nav flex-row align-items-center ms-auto">
-                <!-- User -->
-                <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                      <img src="img/avatars/1.png" alt class="h-auto rounded-circle" />
-                    </div>
+                <div class="navbar-nav align-items-center">
+                  <a
+                    class="nav-link style-switcher-toggle hide-arrow"
+                    href="javascript:void(0);"
+                  >
+                    <i class="ti ti-sm"></i>
                   </a>
-                  <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <div class="d-flex">
-                          <div class="flex-shrink-0 me-3">
-                            <div class="avatar avatar-online">
-                              <img src="img/avatars/1.png" alt class="h-auto rounded-circle" />
-                            </div>
-                          </div>
-                          <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="ti ti-user-check me-2 ti-sm"></i>
-                        <span class="align-middle">My Profile</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="ti ti-settings me-2 ti-sm"></i>
-                        <span class="align-middle">Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 ti ti-credit-card me-2 ti-sm"></i>
-                          <span class="flex-grow-1 align-middle">Billing</span>
-                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-label-danger w-px-20 h-px-20"
-                            >2</span
-                          >
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="ti ti-logout me-2 ti-sm"></i>
-                        <span class="align-middle">Log Out</span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <!--/ User -->
+                </div>
               </ul>
             </div>
           </div>
@@ -198,15 +159,15 @@
                   <li class="menu-item">
                     <a href="trainings" class="menu-link">
                       <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                      <div data-i18n="Page 1">Page 1</div>
+                      <div data-i18n="All Trainings">All Trainings</div>
                     </a>
                   </li>
-                  <li class="menu-item active">
+                  <!--<li class="menu-item active">
                     <a href="register" class="menu-link">
                       <i class="menu-icon tf-icons ti ti-app-window"></i>
                       <div data-i18n="Page 2">Page 2</div>
                     </a>
-                  </li>
+                  </li>-->
                 </ul>
               </div>
             </aside>
@@ -217,10 +178,11 @@
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row my-4">
                 <div class="col-md-6">
-                  <h3 class="fw-bold"><%= Title %></h3>
-                  <p>Date From: <%= DateFrom %></p>
-                  <p>Date To: <%= DateTo %></p>
-                  <p>Location: <%= Location %></p>
+                  <input type="hidden" id="trainingId" value="<%= id %>">
+                  <h3 class="fw-bold"><%= title %></h3>
+                  <p>From: <%= formattedDateFrom %></p>
+                  <p>To: <%= formattedDateTo %></p>
+                  <p>Location: <%= location %></p>
                 </div>
                 
                 <div class="col-md-6">
@@ -228,11 +190,11 @@
                     <div class="row g-3">
                       <div class="col-md-6">
                         <label class="form-label" for="firstName">First Name</label>
-                        <input type="text" id="firstName" class="form-control" placeholder="John Doe" />
+                        <input type="text" id="firstName" class="form-control" />
                       </div>
                       <div class="col-md-6">
                         <label class="form-label" for="lastName">Last Name</label>
-                        <input type="text" id="lastName" class="form-control" placeholder="John Doe" />
+                        <input type="text" id="lastName" class="form-control" />
                       </div>
                       <div class="col-md-6">
                         <label class="form-label" for="email">Email</label>
@@ -242,8 +204,6 @@
                             type="text"
                             id="email"
                             name="email"
-                            placeholder="john.doe@example.com"
-                            aria-label="john.doe@example.com"
                             aria-describedby="email3"
                           />
                         </div>
@@ -254,17 +214,15 @@
                           type="text"
                           id="contactNumber"
                           class="form-control phone-mask"
-                          placeholder="658 799 8941"
-                          aria-label="658 799 8941"
                         />
                       </div>
                       <div class="col-md-6">
                         <label class="form-label" for="companyName">Company Name</label>
-                        <input type="text" id="companyName" class="form-control" placeholder="John Doe" />
+                        <input type="text" id="companyName" class="form-control" />
                       </div>
                       <div class="col-md-6">
                         <label class="form-label" for="fileInput">Attachment</label>
-                        <input type="file" id="fileInput" class="form-control" placeholder="John Doe" />
+                        <input type="file" id="fileInput" class="form-control" />
                       </div>
                     </div>
                     <div class="row mt-3">
@@ -274,6 +232,21 @@
                       </div>
                     </div>
                   </form>
+                </div>
+              </div>
+              
+              <!-- Bootstrap modal for successful submission -->
+              <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content bg-dark">
+                    <div class="modal-body">
+                      <h5 class="modal-title mb-3" id="successModalLabel">Success!</h5>
+                      Thank you for registering! Your submission has been successful. An email with further details and a link will be sent shortly.
+                    </div>
+                    <div class="modal-footer border border-0">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -341,5 +314,6 @@
     <script src="js/main.js"></script>
 
     <!-- Page JS -->
+    <script src="vendor/js/main.js"></script>
   </body>
 </html>

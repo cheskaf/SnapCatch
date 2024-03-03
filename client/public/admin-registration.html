@@ -229,28 +229,8 @@
                     </li>
                     <li>
                       <a class="dropdown-item" href="#">
-                        <i class="ti ti-user-check me-2 ti-sm"></i>
-                        <span class="align-middle">My Profile</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
                         <i class="ti ti-settings me-2 ti-sm"></i>
                         <span class="align-middle">Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i
-                            class="flex-shrink-0 ti ti-credit-card me-2 ti-sm"
-                          ></i>
-                          <span class="flex-grow-1 align-middle">Billing</span>
-                          <span
-                            class="flex-shrink-0 badge badge-center rounded-pill bg-label-danger w-px-20 h-px-20"
-                            >2</span
-                          >
-                        </span>
                       </a>
                     </li>
                     <li>
@@ -357,7 +337,7 @@
               <!-- Users List Table -->
               <div class="card">
                 <div class="card-header border-bottom">
-                  <h5 class="card-title mb-3">Admin</h5>
+                  <h5 class="card-title mb-3">Manage Registrations</h5>
                   <div
                     class="d-flex justify-content-between align-items-center row pb-2 gap-3 gap-md-0"
                   >
@@ -434,7 +414,7 @@
                               <span
                                 ><i class="ti ti-plus me-0 me-sm-1 ti-xs"></i
                                 ><span class="d-none d-sm-inline-block"
-                                  >Add New User</span
+                                  >New Registration</span
                                 ></span
                               >
                             </button>
@@ -463,7 +443,7 @@
                             aria-controls="DataTables_Table_0"
                             rowspan="1"
                             colspan="1"
-                            style="width: 305px"
+                            style="width: 170px"
                             aria-label="User: activate to sort column descending"
                             aria-sort="ascending"
                           >
@@ -475,7 +455,7 @@
                             aria-controls="DataTables_Table_0"
                             rowspan="1"
                             colspan="1"
-                            style="width: 147px"
+                            style="width: 170px"
                             aria-label="Role: activate to sort column ascending"
                           >
                             Company Name
@@ -514,7 +494,8 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="odd">
+                        <% registrationListData.d.results.forEach(function(item) { %>
+                        <tr>
                           <td
                             class="control dtr-hidden"
                             style="display: none"
@@ -527,8 +508,8 @@
                               <div class="avatar-wrapper">
                                 <div class="avatar avatar-sm me-3">
                                   <span
-                                    class="avatar-initial rounded-circle bg-label-danger"
-                                    >AM</span
+                                    class="avatar-initial rounded-circle bg-label-primary"
+                                    ><%= item.initials %></span
                                   >
                                 </div>
                               </div>
@@ -537,17 +518,17 @@
                                   href="app-user-view-account.html"
                                   class="text-body text-truncate"
                                   ><span class="fw-semibold"
-                                    >Adeline Micco</span
+                                    ><%= item.FirstName %> <%= item.LastName %></span
                                   ></a
                                 ><small class="text-muted"
-                                  >amiccoo@whitehouse.gov</small
+                                  ><%= item.Email %></small
                                 >
                               </div>
                             </div>
                           </td>
-                          <td>Microgenesis</td>
-                          <td>09123456789</td>
-                          <td>Manual - Credit Card</td>
+                          <td><%= item.CompanyName %></td>
+                          <td><%= item.ContactNumber %></td>
+                          <td><%= item.formattedDateCreated %></td>
                           <td>
                             <div class="d-flex align-items-center">
                               <a href="javascript:;" class="text-body"
@@ -574,6 +555,7 @@
                             </div>
                           </td>
                         </tr>
+                        <% }); %>
                       </tbody>
                     </table>
                     <div class="row mx-2">
@@ -684,7 +666,7 @@
                 >
                   <div class="offcanvas-header">
                     <h5 id="offcanvasAddUserLabel" class="offcanvas-title">
-                      Add User
+                      Add Registration
                     </h5>
                     <button
                       type="button"
@@ -701,16 +683,32 @@
                       novalidate="novalidate"
                     >
                       <div class="mb-3 fv-plugins-icon-container">
-                        <label class="form-label" for="add-user-fullname"
-                          >Full Name</label
+                        <label class="form-label" for="firstName"
+                          >First Name</label
                         >
                         <input
                           type="text"
                           class="form-control"
-                          id="add-user-fullname"
-                          placeholder="John Doe"
-                          name="userFullname"
-                          aria-label="John Doe"
+                          id="firstName"
+                          placeholder="John"
+                          name="firstName"
+                          aria-label="John"
+                        />
+                        <div
+                          class="fv-plugins-message-container invalid-feedback"
+                        ></div>
+                      </div>
+                      <div class="mb-3 fv-plugins-icon-container">
+                        <label class="form-label" for="lastName"
+                          >Last Name</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="lastName"
+                          placeholder="Doe"
+                          name="lastName"
+                          aria-label="Doe"
                         />
                         <div
                           class="fv-plugins-message-container invalid-feedback"
@@ -734,7 +732,7 @@
                       </div>
                       <div class="mb-3">
                         <label class="form-label" for="add-user-contact"
-                          >Contact</label
+                          >Contact Number</label
                         >
                         <input
                           type="text"
@@ -747,114 +745,16 @@
                       </div>
                       <div class="mb-3">
                         <label class="form-label" for="add-user-company"
-                          >Company</label
+                          >Company Name</label
                         >
                         <input
                           type="text"
                           id="add-user-company"
                           class="form-control"
-                          placeholder="Web Developer"
+                          placeholder="XYZ Inc."
                           aria-label="jdoe1"
                           name="companyName"
                         />
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-label" for="country">Country</label>
-                        <div class="position-relative">
-                          <select
-                            id="country"
-                            class="select2 form-select select2-hidden-accessible"
-                            data-select2-id="country"
-                            tabindex="-1"
-                            aria-hidden="true"
-                          >
-                            <option value="" data-select2-id="2">Select</option>
-                            <option value="Australia">Australia</option>
-                            <option value="Bangladesh">Bangladesh</option>
-                            <option value="Belarus">Belarus</option>
-                            <option value="Brazil">Brazil</option>
-                            <option value="Canada">Canada</option>
-                            <option value="China">China</option>
-                            <option value="France">France</option>
-                            <option value="Germany">Germany</option>
-                            <option value="India">India</option>
-                            <option value="Indonesia">Indonesia</option>
-                            <option value="Israel">Israel</option>
-                            <option value="Italy">Italy</option>
-                            <option value="Japan">Japan</option>
-                            <option value="Korea">Korea, Republic of</option>
-                            <option value="Mexico">Mexico</option>
-                            <option value="Philippines">Philippines</option>
-                            <option value="Russia">Russian Federation</option>
-                            <option value="South Africa">South Africa</option>
-                            <option value="Thailand">Thailand</option>
-                            <option value="Turkey">Turkey</option>
-                            <option value="Ukraine">Ukraine</option>
-                            <option value="United Arab Emirates">
-                              United Arab Emirates
-                            </option>
-                            <option value="United Kingdom">
-                              United Kingdom
-                            </option>
-                            <option value="United States">United States</option>
-                          </select>
-                          <span
-                            class="select2 select2-container select2-container--default"
-                            dir="ltr"
-                            data-select2-id="1"
-                            style="width: 352px"
-                            ><span class="selection"
-                              ><span
-                                class="select2-selection select2-selection--single"
-                                role="combobox"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                                tabindex="0"
-                                aria-disabled="false"
-                                aria-labelledby="select2-country-container"
-                                ><span
-                                  class="select2-selection__rendered"
-                                  id="select2-country-container"
-                                  role="textbox"
-                                  aria-readonly="true"
-                                  ><span class="select2-selection__placeholder"
-                                    >Select Country</span
-                                  ></span
-                                ><span
-                                  class="select2-selection__arrow"
-                                  role="presentation"
-                                  ><b
-                                    role="presentation"
-                                  ></b></span></span></span
-                            ><span
-                              class="dropdown-wrapper"
-                              aria-hidden="true"
-                            ></span
-                          ></span>
-                        </div>
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-label" for="user-role"
-                          >User Role</label
-                        >
-                        <select id="user-role" class="form-select">
-                          <option value="subscriber">Subscriber</option>
-                          <option value="editor">Editor</option>
-                          <option value="maintainer">Maintainer</option>
-                          <option value="author">Author</option>
-                          <option value="admin">Admin</option>
-                        </select>
-                      </div>
-                      <div class="mb-4">
-                        <label class="form-label" for="user-plan"
-                          >Select Plan</label
-                        >
-                        <select id="user-plan" class="form-select">
-                          <option value="basic">Basic</option>
-                          <option value="enterprise">Enterprise</option>
-                          <option value="company">Company</option>
-                          <option value="team">Team</option>
-                        </select>
                       </div>
                       <button
                         type="submit"

@@ -23,7 +23,7 @@ const { initializeTrainingListData, formatDate } = require('../../client/src/tra
 // Initialize training list data when the server starts
 initializeTrainingListData(siteUrl, credentials, trainingListTitle)
     .then(trainingListData => {
-        console.log('Training list data initialized:', trainingListData);
+        // console.log('Training list data initialized:', trainingListData);
         // Now you can use the training list data in your application as needed
     })
     .catch(err => {
@@ -40,19 +40,19 @@ router.get('/test', (req, res) => {
 });
 
 router.get('/register', (req, res) => {
-    // Extract data from query parameter
-    const encodedData = req.query.data;
-    // Decode the data
-    const decodedData = decodeURIComponent(encodedData);
-    // Split the decoded data into individual attributes
-    const [ID, Title, DateFrom, DateTo, Location] = decodedData.split('-');
+    // Extract data from query parameters
+    const { id, title, dateFrom, dateTo, location } = req.query;
+    // Format dateFrom and dateTo
+    const formattedDateFrom = formatDate(dateFrom);
+    const formattedDateTo = formatDate(dateTo);
     // Now you can use these values as needed
-    res.render('user-registration', { ID, Title, DateFrom, DateTo, Location });
+    res.render('user-registration', { id, title, formattedDateFrom, formattedDateTo, location });
 });
 
 // Endpoint to render HTML template with training list data
 router.get('/trainings', async (req, res) => {
     try {
+        // Fetch training list data
         const trainingListData = await initializeTrainingListData(siteUrl, credentials, trainingListTitle);
         // Format dates before passing them to the HTML template
         trainingListData.d.results.forEach(item => {
