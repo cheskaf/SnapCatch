@@ -183,6 +183,9 @@
                   <p>From: <%= formattedDateFrom %></p>
                   <p>To: <%= formattedDateTo %></p>
                   <p>Location: <%= location %></p>
+                  <button
+                    class="btn btn-sm btn-label-primary" data-bs-toggle="modal" data-bs-target="#shareModal"
+                    >Share</button>
                 </div>
                 
                 <div class="col-md-6">
@@ -237,8 +240,8 @@
               
               <!-- Bootstrap modal for successful submission -->
               <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content bg-dark">
+                <div class="modal-dialog">
+                  <div class="modal-content">
                     <div class="modal-body">
                       <h5 class="modal-title mb-3" id="successModalLabel">Success!</h5>
                       Thank you for registering! Your submission has been successful. An email with further details and a link will be sent shortly.
@@ -251,6 +254,38 @@
               </div>
             </div>
             <!--/ Content -->
+            
+            <!-- Modals -->
+            
+            <!-- Share Modal -->
+            <div class="modal fade" id="shareModal" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="shareModalLabel">Share</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body text-center"> <!-- Added text-center class -->
+                    <img src="<%= qrCodeUrl %>">
+                    <p class="mt-3">Share by scanning the qr code</p>
+                    <div class="url-box">
+                      <input type="text" id="urlInput" value="<%= currentUrl %>" class="form-control d-inline" style="width:auto" onclick="copyToClipboard()" readonly>
+                      <button onclick="copyToClipboard()" class="btn btn-label-primary d-inline-block">Copy</button>
+                    </div>
+                  </div>
+                  <!--<div class="modal-footer">
+                    <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                      Close
+                    </button>
+                  </div>-->
+                </div>
+              </div>
+            </div>
 
             <!-- Footer -->
             <footer class="content-footer footer bg-footer-theme">
@@ -306,6 +341,20 @@
     <script src="vendor/libs/hammer/hammer.js"></script>
 
     <script src="vendor/js/menu.js"></script>
+    
+    <script>
+      function copyToClipboard() {
+        // Get the text field
+        var copyText = document.getElementById("urlInput");
+
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value);
+      }
+    </script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->

@@ -18,7 +18,7 @@ const credentials = {
 };
 
 // Import required modules
-const { initializeTrainingListData, formatDate } = require('../../client/src/trainingList');
+const { initializeTrainingListData, formatDate, generateQRCode, generateUniqueUrls } = require('../../client/src/trainingList');
 
 // Initialize training list data when the server starts
 initializeTrainingListData(siteUrl, credentials, trainingListTitle)
@@ -39,14 +39,18 @@ router.get('/test', (req, res) => {
     res.sendFile(path.join(__dirname, '..', '..', 'client', 'public', 'test.html'));
 });
 
-router.get('/register', (req, res) => {
+router.get('/register', async (req, res) => {
     // Extract data from query parameters
     const { id, title, dateFrom, dateTo, location } = req.query;
     // Format dateFrom and dateTo
     const formattedDateFrom = formatDate(dateFrom);
     const formattedDateTo = formatDate(dateTo);
+     // Generate QR code URL for the registration
+    const qrCodeUrl = await generateQRCode(req.originalUrl);
+    // Get the current URL
+    const currentUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
     // Now you can use these values as needed
-    res.render('user-registration', { id, title, formattedDateFrom, formattedDateTo, location });
+    res.render('user-registration', { id, title, formattedDateFrom, formattedDateTo, location, qrCodeUrl, currentUrl });
 });
 
 // Endpoint to render HTML template with training list data

@@ -49,8 +49,50 @@ function formatDate(dateString) {
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true});
 }
 
+// Function to delete a registration
+async function deleteRegistration(siteUrl, credentials, registrationListTitle, id) {
+    try {
+        // Get authentication headers
+        const options = await spAuth.getAuth(siteUrl, credentials);
+        const headers = options.headers;
+        // Ensure headers accept JSON response
+        headers['Accept'] = 'application/json;odata=verbose';
+        // Set the request body
+        const body = {
+            '__metadata': { 'type': 'SP.Data.RegistrationsListItem' },
+            'Status': 'Cancelled'
+        };
+        // Perform MERGE request to update the registration status
+        await requestPromise.merge({
+            url: `${siteUrl}/_api/web/lists/getbytitle('${registrationListTitle}')/items(${id})`,
+            headers: headers,
+            body: body,
+            json: true // Automatically parse JSON response
+        });
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function deleteListItem(itemId) {
+    try {
+        const digest = await spr.requestDigest(siteUrl);
+        return spr.post(`${siteUrl}/_api/web/lists/GetByTitle('CNECustomerRegistrationForm')/items(${itemId})`, {
+            headers: {
+                'X-RequestDigest': digest,
+                'X-HTTP-Method': 'DELETE',
+                'If-Match': '*'
+            }
+        });
+    } catch (error) {
+        console.error('Error deleting item:', error, itemId);
+    }
+}
+
 module.exports = {
     fetchRegistrationListData,
     initializeRegistrationListData,
-    formatDate
+    formatDate,
+    deleteRegistration,
+    deleteListItem
 };

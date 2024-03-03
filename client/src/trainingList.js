@@ -10,6 +10,7 @@
 const spAuth = require('node-sp-auth');
 const spRequest = require('sp-request');
 const requestPromise = require('request-promise');
+const qr = require('qrcode');
 
 // Function to fetch data from the Training List
 async function fetchTrainingListData(siteUrl, credentials, trainingListTitle) {
@@ -33,18 +34,36 @@ async function fetchTrainingListData(siteUrl, credentials, trainingListTitle) {
     }
 }
 
-// Function to generate unique URLs for each item with query parameters
-function generateUniqueUrls(data) {
-    data.d.results.forEach(item => {
-        // Encode each attribute separately
-        const encodedID = encodeURIComponent(item.ID);
-        const encodedTitle = encodeURIComponent(item.Title);
-        const encodedDateFrom = encodeURIComponent(item.DateFrom);
-        const encodedDateTo = encodeURIComponent(item.DateTo);
-        const encodedLocation = encodeURIComponent(item.Location);
-        // Construct the unique URL with query parameters
-        item.uniqueUrl = `/register?id=${encodedID}&title=${encodedTitle}&dateFrom=${encodedDateFrom}&dateTo=${encodedDateTo}&location=${encodedLocation}`;
-    });
+// Function to generate QR code
+async function generateQRCode(url) {
+    try {
+        // Generate QR code as a data URL
+        const qrCodeDataUrl = await qr.toDataURL(url);
+        return qrCodeDataUrl;
+    } catch (error) {
+        throw error;
+    }
+}
+
+// Modify the generateUniqueUrls function to include QR code URL
+async function generateUniqueUrls(data) {
+    try {
+        for (const item of data.d.results) {
+            const encodedID = encodeURIComponent(item.ID);
+            const encodedTitle = encodeURIComponent(item.Title);
+            const encodedDateFrom = encodeURIComponent(item.DateFrom);
+            const encodedDateTo = encodeURIComponent(item.DateTo);
+            const encodedLocation = encodeURIComponent(item.Location);
+
+            item.uniqueUrl = `/register?id=${encodedID}&title=${encodedTitle}&dateFrom=${encodedDateFrom}&dateTo=${encodedDateTo}&location=${encodedLocation}`;
+
+            // Generate QR code URL
+            const qrCodeUrl = await generateQRCode(item.uniqueUrl);
+            item.qrCodeUrl = qrCodeUrl;
+        }
+    } catch (error) {
+        throw error;
+    }
 }
 
 // Function to initialize training list data
@@ -69,6 +88,7 @@ function formatDate(dateString) {
 module.exports = {
     fetchTrainingListData,
     generateUniqueUrls,
+    generateQRCode,
     initializeTrainingListData,
     formatDate
 };

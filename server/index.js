@@ -147,6 +147,24 @@ app.post('/api/create-list-item/:listTitle', upload.single('file'), async (req, 
     }
 });
 
+
+// Require the updateListItem function from the registration.js file
+const { updateListItem } = require('../client/assets/js/admin-registrations');
+
+//----------DELETE----------------
+app.delete('/api/delete-list-item/:listTitle/:itemId', async (req, res) => {
+    try {
+        const { listTitle, itemId } = req.params;
+
+        await deleteListItem(itemId);
+
+        res.status(200).json({ message: 'Item deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting item:', error);
+        res.status(500).json({ error: 'Failed to delete item' });
+    }
+});
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
