@@ -166,6 +166,26 @@ app.delete('/api/delete-list-item/:listTitle/:itemId', async (req, res) => {
     }
 });
 
+// Require the updateListItem function from the registration.js file
+const { updateListItem } = require('../client/assets/js/admin-registrations');
+
+//----------UPDATE----------------
+app.put('/api/update-list-item/:listTitle/:itemId', async (req, res) => {
+    try {
+        const { listTitle, itemId } = req.params;
+        console.log ("listTitle, itemId", listTitle, itemId)
+        const data = req.body;
+        console.log ("data", data)
+
+        await updateListItem(listTitle, itemId, data);
+
+        res.status(200).json({ message: 'Item updated successfully' });
+    } catch (error) {
+        console.error('Error updating item:', error);
+        res.status(500).json({ error: 'Failed to update item' });
+    }
+});
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

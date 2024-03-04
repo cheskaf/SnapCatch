@@ -95,6 +95,35 @@ $(document).ready(function () {
         // Reload the current page
         location.reload();
     });
+    
+    // Event delegation for clicking the updateRegistrationButton
+    $(document).on('click', '#updateRegistrationButton', function () {
+        // Extract form data including file
+        var formData = extractFormData(); // Invoke the function
+        console.log("Extracted Form Data:", formData); // Log the FormData object
+        
+        // Get the id from registrationId input field
+        var registrationId = $('#registrationId').val();    
+        console.log("Registration ID:", registrationId); // Log the registration ID    
+
+        // Send form data to Node.js server using AJAX with multipart/form-data
+        $.ajax({
+            type: "PUT", // Change POST to PUT
+            url: "http://localhost:3000/api/update-list-item/CNECustomerRegistrationForm/" + registrationId,
+            data: formData,
+            contentType: false,
+            processData: false,
+            // Update the success callback function
+            success: function (response) {
+                // Show the success modal
+                $('#successModal').modal('show');
+            },
+            error: function (xhr, status, error) {
+                console.error("Error:", error);
+                // Optionally, handle error
+            },
+        });
+    });
 
 });
 

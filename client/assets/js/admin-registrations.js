@@ -108,10 +108,30 @@ async function deleteListItem(listTitle, itemId) {
     }
 }
 
+// updateListItem
+async function updateListItem(listTitle, itemId, data) {
+    console.log('updateListItem', listTitle, itemId, data);
+    try {
+        const digest = await spr.requestDigest(siteUrl);
+        return spr.post(`${siteUrl}/_api/web/lists/GetByTitle('${listTitle}')/items(${itemId})`, {
+            headers: {
+                'X-RequestDigest': digest,
+                'X-HTTP-Method': 'MERGE',
+                'If-Match': '*'
+            },
+            body: data,
+            json: true
+        });
+    } catch (error) {
+        console.error('Error updating item:', error, itemId);
+    }
+}
+
 module.exports = {
     fetchRegistrationListData,
     initializeRegistrationListData,
     formatDate,
     deleteRegistration,
-    deleteListItem
+    deleteListItem,
+    updateListItem
 };
