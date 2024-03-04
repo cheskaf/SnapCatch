@@ -10,6 +10,8 @@
 const spAuth = require('node-sp-auth');
 const spRequest = require('sp-request');
 const requestPromise = require('request-promise');
+const nodemailer = require('nodemailer');
+const emailTemplate = require('./emailTemplate');
 const fs = require('fs');
 
 // Environment variables
@@ -17,6 +19,9 @@ const PORT = process.env.PORT || 3000; // Port 3000 is the default port if no ot
 const siteUrl = process.env.SITE_URL;
 const listTitle = process.env.LIST_TITLE;
 const trainingListTitle = process.env.TRAINING_LIST_TITLE;
+const emailService = process.env.EMAIL_SERVICE;
+const emailUser = process.env.EMAIL_USER;
+const emailPass = process.env.EMAIL_PASS;
 
 // Credentials for SharePoint authentication
 const credentials = {
@@ -55,7 +60,7 @@ async function createListItem(data, listTitle, file) {
         }
 
         // Send email notification
-        //await sendEmailNotification(data.FirstName, data.Email, data);
+        await sendEmailNotification(data.FirstName, data.Email, data);
 
         return listItemResponse;
     } catch (error) {
@@ -91,6 +96,31 @@ async function uploadAttachment(file, listTitle, itemId) {
         console.log('Attachment uploaded successfully!');
     } catch (error) {
         console.error('Error uploading attachment:', error);
+        throw error;
+    }
+}
+
+const transporter = nodemailer.createTransport({
+    service: emailService,
+    auth: {
+        user: emailUser,
+        pass: emailPass
+    }
+});
+
+async function sendEmailNotification(name, email, data) {
+    try {
+        console.log('Sending email with data:', data); // Log data being passed to the email function
+
+        const mailOptions = {
+            from: '"SnapCatch" <reg.training209@gmail.com>',
+            to: email,
+            subject: 'SnapCatch: Registration Successful',
+            html: emailTemplate(name, email, data) // Use HTML instead of plain text
+        };
+        await transporter.sendMail(mailOptions);
+    } catch (error) {
+        console.error('Error sending email:', error);
         throw error;
     }
 }

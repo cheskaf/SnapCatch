@@ -36,6 +36,52 @@ $(document).ready(function () {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Select all delete buttons by class
+    const deleteButtons = document.querySelectorAll('.delete-record');
+
+    // Add click event listener to each delete button
+    deleteButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            // Extract record ID from data attribute
+            const recordId = button.getAttribute('data-record-id');
+
+            // Call delete function with record ID
+            deleteRecord(recordId);
+        });
+    });
+
+    // Function to send AJAX request to delete record
+    function deleteRecord(recordId) {
+        // Send AJAX request to backend endpoint
+        fetch(`/api/delete-list-item/CNECustomerRegistrationForm/${recordId}`, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to delete record');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Handle success
+            console.log('Record deleted successfully');
+            // You may want to update the UI after successful deletion
+
+            // Close all modals with id starting with deleteModal_
+            $('div[id^="deleteModal_"]').modal('hide');            
+            
+            // Reload the page to reflect the changes
+            location.reload();
+        })
+        .catch(error => {
+            // Handle error
+            console.error('Error deleting record:', error);
+            // You may want to show an error message to the user
+        });
+    }
+});
+
 function extractFormData() {
     try {
         // Extract data and trim string inputs
@@ -79,3 +125,27 @@ function extractFormData() {
     }
 }
 
+// Function to send AJAX request to delete record
+function deleteRecord(recordId) {
+    console.log ("This is the id: ", recordId)
+    // Send AJAX request to backend endpoint
+    fetch(`/api/delete-list-item/CNECustomerRegistrationForm/${recordId}`, {
+        method: 'DELETE'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to delete record');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Handle success
+        console.log('Record deleted successfully');
+        // You may want to update the UI after successful deletion
+    })
+    .catch(error => {
+        // Handle error
+        console.error('Error deleting record:', error);
+        // You may want to show an error message to the user
+    });
+}

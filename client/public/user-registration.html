@@ -193,11 +193,11 @@
                     <div class="row g-3">
                       <div class="col-md-6">
                         <label class="form-label" for="firstName">First Name</label>
-                        <input type="text" id="firstName" class="form-control" />
+                        <input type="text" id="firstName" class="form-control" required />
                       </div>
                       <div class="col-md-6">
                         <label class="form-label" for="lastName">Last Name</label>
-                        <input type="text" id="lastName" class="form-control" />
+                        <input type="text" id="lastName" class="form-control" required />
                       </div>
                       <div class="col-md-6">
                         <label class="form-label" for="email">Email</label>
@@ -208,6 +208,7 @@
                             id="email"
                             name="email"
                             aria-describedby="email3"
+                            required
                           />
                         </div>
                       </div>
@@ -217,15 +218,16 @@
                           type="text"
                           id="contactNumber"
                           class="form-control phone-mask"
+                          required
                         />
                       </div>
                       <div class="col-md-6">
                         <label class="form-label" for="companyName">Company Name</label>
-                        <input type="text" id="companyName" class="form-control" />
+                        <input type="text" id="companyName" class="form-control" required />
                       </div>
                       <div class="col-md-6">
                         <label class="form-label" for="fileInput">Attachment</label>
-                        <input type="file" id="fileInput" class="form-control" />
+                        <input type="file" id="fileInput" class="form-control" required />
                       </div>
                     </div>
                     <div class="row mt-3">
@@ -247,7 +249,7 @@
                       Thank you for registering! Your submission has been successful. An email with further details and a link will be sent shortly.
                     </div>
                     <div class="modal-footer border border-0">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-label-secondary waves-effect" data-bs-dismiss="modal">Close</button>
                     </div>
                   </div>
                 </div>

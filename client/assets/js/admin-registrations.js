@@ -9,6 +9,22 @@ const spAuth = require('node-sp-auth');
 const spRequest = require('sp-request');
 const requestPromise = require('request-promise');
 
+// Environment variables
+const PORT = process.env.PORT || 3000; // Port 3000 is the default port if no other port is set
+const siteUrl = process.env.SITE_URL;
+const listTitle = process.env.LIST_TITLE;
+const trainingListTitle = process.env.TRAINING_LIST_TITLE;
+const emailService = process.env.EMAIL_SERVICE;
+const emailUser = process.env.EMAIL_USER;
+const emailPass = process.env.EMAIL_PASS;
+
+// Credentials for SharePoint authentication
+const credentials = {
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    realm: process.env.REALM
+};
+
 // Function to fetch data from the Registration List
 async function fetchRegistrationListData(siteUrl, credentials, registrationListTitle) {
     try {
@@ -74,10 +90,13 @@ async function deleteRegistration(siteUrl, credentials, registrationListTitle, i
     }
 }
 
-async function deleteListItem(itemId) {
+// Create an instance of the sp-request library with the provided credentials
+const spr = spRequest.create(credentials);
+
+async function deleteListItem(listTitle, itemId) {
     try {
         const digest = await spr.requestDigest(siteUrl);
-        return spr.post(`${siteUrl}/_api/web/lists/GetByTitle('CNECustomerRegistrationForm')/items(${itemId})`, {
+        return spr.post(`${siteUrl}/_api/web/lists/GetByTitle('${listTitle}')/items(${itemId})`, {
             headers: {
                 'X-RequestDigest': digest,
                 'X-HTTP-Method': 'DELETE',

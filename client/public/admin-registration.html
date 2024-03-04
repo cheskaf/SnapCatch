@@ -509,7 +509,7 @@
                                 <div class="avatar avatar-sm me-3 pe-none">
                                   <span
                                     class="avatar-initial rounded-circle bg-label-primary"
-                                    ><%= item.initials %></span
+                                    ><%= item.ID %><!--initials--></span
                                   >
                                 </div>
                               </div>
@@ -535,7 +535,7 @@
                                 ><i class="ti ti-edit ti-sm me-2"></i></a
                               ><a
                                 href="javascript:;"
-                                class="text-body delete-record" data-bs-toggle="modal" data-bs-target="#deleteModal_<%= item.Id %>" data-record-Id="<%= item.Id %>"
+                                class="text-body" data-bs-toggle="modal" data-bs-target="#deleteModal_<%= item.Id %>" data-record-Id="<%= item.Id %>"
                                 >
                                 <i class="ti ti-trash ti-sm mx-2"></i>
                                 </a>
@@ -578,7 +578,7 @@
                                 <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
                                   Cancel
                                 </button>
-                                <button type="button" class="btn btn-primary">Delete</button>
+                                <button type="button" class="btn btn-primary delete-record" data-record-Id="<%= item.Id %>">Delete</button>
                               </div>
                             </div>
                           </div>
@@ -967,8 +967,6 @@
 
     <!-- Main JS -->
     <script src="js/main.js"></script>
-
-    <!-- Page JS 
-  <script src="js/app-user-list.js"></script>-->
+    <script src="vendor/js/main.js"></script>
   </body>
 </html>

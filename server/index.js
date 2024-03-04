@@ -148,15 +148,16 @@ app.post('/api/create-list-item/:listTitle', upload.single('file'), async (req, 
 });
 
 
-// Require the updateListItem function from the registration.js file
-const { updateListItem } = require('../client/assets/js/admin-registrations');
+// Require the deleteListItem function from the registration.js file
+const { deleteListItem } = require('../client/assets/js/admin-registrations');
 
 //----------DELETE----------------
 app.delete('/api/delete-list-item/:listTitle/:itemId', async (req, res) => {
     try {
         const { listTitle, itemId } = req.params;
+        console.log ("listTitle, itemId", listTitle, itemId)
 
-        await deleteListItem(itemId);
+        await deleteListItem(listTitle, itemId);
 
         res.status(200).json({ message: 'Item deleted successfully' });
     } catch (error) {
