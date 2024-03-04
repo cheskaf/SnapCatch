@@ -7,8 +7,8 @@
  */
 
 // Import required packages and libraries
-const dotenv = require('dotenv');
-const result = dotenv.config();
+// import dotenv from 'dotenv';
+// const result = dotenv.config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -33,16 +33,16 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Environment variables
-const PORT = process.env.PORT || 3000; // Port 3000 is the default port if no other port is set
-const siteUrl = process.env.SITE_URL;
-const listTitle = process.env.LIST_TITLE;
-const trainingListTitle = process.env.TRAINING_LIST_TITLE;
+const PORT = 3000; // Port 3000 is the default port if no other port is set
+const siteUrl = "https://7ttnyd.sharepoint.com/sites/Boracay";
+const listTitle = "CNECustomerRegistrationForm";
+const trainingListTitle = "TrainingList"
 
 // Credentials for SharePoint authentication
 const credentials = {
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    realm: process.env.REALM
+    clientId: "7355e8b5-cdc8-4ae7-b9ed-97b6865445f5",
+    clientSecret: "QWHYuZaioPL82r/UXoXzgP8OyqE7R/v0rl2B9/QVPfw=",
+    realm: "fcce36ce-3dbe-4de4-8435-dc6c0b09e0d6"
 };
 
 // Middleware setup
