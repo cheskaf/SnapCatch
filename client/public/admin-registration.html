@@ -506,7 +506,7 @@
                               class="d-flex justify-content-start align-items-center user-name"
                             >
                               <div class="avatar-wrapper">
-                                <div class="avatar avatar-sm me-3">
+                                <div class="avatar avatar-sm me-3 pe-none">
                                   <span
                                     class="avatar-initial rounded-circle bg-label-primary"
                                     ><%= item.initials %></span
@@ -531,11 +531,11 @@
                           <td><%= item.formattedDateCreated %></td>
                           <td>
                             <div class="d-flex align-items-center">
-                              <a href="javascript:;" class="text-body" data-bs-toggle="modal" data-bs-target="#editModal"
+                              <a href="javascript:;" class="text-body" data-bs-toggle="modal" data-bs-target="#editModal_<%= item.Id %>"
                                 ><i class="ti ti-edit ti-sm me-2"></i></a
                               ><a
                                 href="javascript:;"
-                                class="text-body delete-record" data-bs-toggle="modal" data-bs-target="#deleteModal" data-record-id="<%= item.id %>"
+                                class="text-body delete-record" data-bs-toggle="modal" data-bs-target="#deleteModal_<%= item.Id %>" data-record-Id="<%= item.Id %>"
                                 >
                                 <i class="ti ti-trash ti-sm mx-2"></i>
                                 </a>
@@ -547,16 +547,135 @@
                               ></a>
                               <div class="dropdown-menu dropdown-menu-end m-0">
                                 <a
-                                  href="app-user-view-account.html"
+                                  href="#"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#viewModal_<%= item.Id %>"
                                   class="dropdown-item"
                                   >View</a
-                                ><a href="javascript:;" class="dropdown-item"
-                                  >Suspend</a
                                 >
                               </div>
                             </div>
                           </td>
                         </tr>
+                        
+                        <!-- Modals -->
+                        
+                        <!-- Delete Modal -->
+                        <div class="modal fade" id="deleteModal_<%= item.Id %>" tabindex="-1" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Delete Registration</h5>
+                                <button
+                                  type="button"
+                                  class="btn-close"
+                                  data-bs-dismiss="modal"
+                                  aria-label="Close"
+                                ></button>
+                              </div>
+                              <div class="modal-body">Are you sure you want to delete the registration "<%= item.FirstName %> <%= item.LastName %> - <%= item.Email %>"?</div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                                  Cancel
+                                </button>
+                                <button type="button" class="btn btn-primary">Delete</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <!-- View Modal -->
+                        <div class="modal fade" id="viewModal_<%= item.Id %>" tabindex="-1" aria-hidden="true">
+                          <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="viewModalLabel">View</h5>
+                                <button
+                                  type="button"
+                                  class="btn-close"
+                                  data-bs-dismiss="modal"
+                                  aria-label="Close"
+                                ></button>
+                              </div>
+                              <div class="modal-body text-center">
+                                <div class="d-flex align-items-center justify-content-center">
+                                  <div class="avatar mb-3 pe-none">
+                                    <span
+                                      class="avatar-initial rounded-circle bg-label-primary"
+                                      ><%= item.initials %></span
+                                    >
+                                  </div>
+                                </div>
+                                <h5><%= item.FirstName %> <%= item.LastName %></h5>
+                                <p><%= item.Email %></p>
+                                <p><%= item.ContactNumber %></p>
+                                <p class="mb-0"><%= item.CompanyName %></p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                                  Close
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Edit Modal -->
+                        <div class="modal fade" id="editModal_<%= item.Id %>" tabindex="-1" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel">Edit Registration</h5>
+                                <button
+                                  type="button"
+                                  class="btn-close"
+                                  data-bs-dismiss="modal"
+                                  aria-label="Close"
+                                ></button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="row g-2">
+                                  <div class="col mb-3">
+                                    <label for="nameBasic" class="form-label">First Name</label>
+                                    <input type="text" id="nameBasic" class="form-control" placeholder="Enter Name" value="<%= item.FirstName %>" />
+                                  </div>
+                                  <div class="col mb-3">
+                                    <label for="nameBasic" class="form-label">Last Name</label>
+                                    <input type="text" id="nameBasic" class="form-control" placeholder="Enter Name" value="<%= item.LastName %>" />
+                                  </div>
+                                </div>
+                                <div class="row g-2">
+                                  <div class="col mb-3">
+                                    <label for="emailBasic" class="form-label">Email</label>
+                                    <input
+                                      type="email"
+                                      id="emailBasic"
+                                      class="form-control"
+                                      placeholder="xxxx@xxx.xx"
+                                      value="<%= item.Email %>"
+                                    />
+                                  </div>
+                                  <div class="col mb-3">
+                                    <label for="dobBasic" class="form-label">Contact Number</label>
+                                    <input type="number" id="dobBasic" class="form-control" placeholder="09123456789" value="<%= item.ContactNumber %>"/>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col mb-0">
+                                    <label for="dobBasic" class="form-label">Company Name</label>
+                                    <input type="text" id="dobBasic" class="form-control" placeholder="Company Name" value="<%= item.CompanyName %>" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                                  Cancel
+                                </button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                         <% }); %>
                       </tbody>
                     </table>
@@ -779,88 +898,6 @@
             </div>
             <!-- / Content -->
             
-            <!-- Modals -->
-            
-            <!-- Delete Modal -->
-            <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Delete Registration</h5>
-                    <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div class="modal-body">Are you sure you want to delete this registration?</div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
-                      Cancel
-                    </button>
-                    <button type="button" class="btn btn-primary">Delete</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Edit Modal -->
-            <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Edit Registration</h5>
-                    <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="row g-2">
-                      <div class="col mb-3">
-                        <label for="nameBasic" class="form-label">First Name</label>
-                        <input type="text" id="nameBasic" class="form-control" placeholder="Enter Name" />
-                      </div>
-                      <div class="col mb-3">
-                        <label for="nameBasic" class="form-label">Last Name</label>
-                        <input type="text" id="nameBasic" class="form-control" placeholder="Enter Name" />
-                      </div>
-                    </div>
-                    <div class="row g-2">
-                      <div class="col mb-3">
-                        <label for="emailBasic" class="form-label">Email</label>
-                        <input
-                          type="email"
-                          id="emailBasic"
-                          class="form-control"
-                          placeholder="xxxx@xxx.xx"
-                        />
-                      </div>
-                      <div class="col mb-3">
-                        <label for="dobBasic" class="form-label">Contact Number</label>
-                        <input type="number" id="dobBasic" class="form-control" placeholder="09123456789" />
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col mb-0">
-                        <label for="dobBasic" class="form-label">Company Name</label>
-                        <input type="text" id="dobBasic" class="form-control" placeholder="Company Name" />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
-                      Cancel
-                    </button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <!-- Footer -->
             <footer class="content-footer footer bg-footer-theme">
               <div class="container-xxl">
