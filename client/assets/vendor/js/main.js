@@ -34,7 +34,37 @@ $(document).ready(function () {
             },
         });
     });
+
+    $("#updateRegistrationForm").submit(function (event) {
+        event.preventDefault(); // Prevent default form submission behavior
+
+        // Extract form data
+        var formData = extractUpdateRegistrationData(); // Invoke the function
+
+        console.log("Extracted Form Data:", formData); // Log the FormData object
+
+        // Send form data to Node.js server using AJAX
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/api/update-list-item/CNECustomerRegistrationForm",
+            data: formData,
+            contentType: false,
+            processData: false,
+            // Update the success callback function
+            success: function (response) {
+                // Show the success modal
+                $('#successModal').modal('show');
+            },
+            error: function (xhr, status, error) {
+                console.error("Error:", error);
+                // Optionally, handle error
+            },
+        });
+    });
+
 });
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
     // Select all delete buttons by class

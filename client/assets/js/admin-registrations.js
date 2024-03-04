@@ -108,6 +108,7 @@ async function deleteListItem(listTitle, itemId) {
     }
 }
 
+
 module.exports = {
     fetchRegistrationListData,
     initializeRegistrationListData,
