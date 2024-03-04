@@ -34,6 +34,68 @@ $(document).ready(function () {
             },
         });
     });
+    
+    // Event listener for clicking the addNewRegistrationSubmit button
+    $('#addNewRegistrationSubmit').click(function () {
+        // Extract form data including file
+        var formData = extractFormData(); // Invoke the function
+        
+        console.log("Extracted Form Data:", formData); // Log the FormData object
+
+        // Send form data to Node.js server using AJAX with multipart/form-data
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/api/create-list-item/CNECustomerRegistrationForm",
+            data: formData,
+            contentType: false,
+            processData: false,
+            // Update the success callback function
+            success: function (response) {
+                // Show the success modal
+                $('#successModal').modal('show');
+            },
+            error: function (xhr, status, error) {
+                console.error("Error:", error);
+                // Optionally, handle error
+            },
+        });
+    });
+    
+    // Event listener for clicking the addNewTrainingSubmit button
+    $('#addNewTrainingSubmit').click(function () {
+        // Extract form data including file
+        var formData = extractTrainingFormData(); // Invoke the function
+        
+        console.log("Extracted Form Data:", formData); // Log the FormData object
+
+        // Send form data to Node.js server using AJAX with multipart/form-data
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/api/create-list-item/TrainingList",
+            data: formData,
+            contentType: false,
+            processData: false,
+            // Update the success callback function
+            success: function (response) {
+                // Show the success modal
+                $('#successModal').modal('show');
+            },
+            error: function (xhr, status, error) {
+                console.error("Error:", error);
+                // Optionally, handle error
+            },
+        });
+    });
+    
+    
+    // Event listener for clicking the .alertsuccess button
+    $('.alertsuccess').click(function () {
+        // Hide the offcanvas
+        $('#offcanvasAddUser').offcanvas('hide');
+        // Reload the current page
+        location.reload();
+    });
+
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -101,6 +163,35 @@ function extractFormData() {
         formData.append('CompanyName', companyName);
         formData.append('TrainingScheduleId', trainingId);
         formData.append('file', file); // Append the file to the FormData object
+
+        return formData;
+    } catch (error) {
+        handleSubmissionError(error);
+        // Log and handle the error
+        console.error("Error extracting form data:", error);
+        alert("An error occurred while submitting the form. Please try again later.");
+    }
+}
+
+function extractTrainingFormData() {
+    try {
+        // Extract data and trim string inputs
+        let title = $("#title").val();
+        let dateFrom = $("#dateFrom").val();
+        let dateTo = $("#dateTo").val();
+        let location = $("#location").val();
+
+        console.log("Title:", title);
+        console.log("Date From:", dateFrom);
+        console.log("Date To:", dateTo);
+        console.log("Location:", location);
+
+        // Construct the form data object
+        let formData = new FormData();
+        formData.append('Title', title);
+        formData.append('DateFrom', dateFrom);
+        formData.append('DateTo', dateTo);
+        formData.append('Location', location);
 
         return formData;
     } catch (error) {

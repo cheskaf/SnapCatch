@@ -17,7 +17,7 @@ const fs = require('fs');
 // Environment variables
 const PORT = process.env.PORT || 3000; // Port 3000 is the default port if no other port is set
 const siteUrl = process.env.SITE_URL;
-const listTitle = process.env.LIST_TITLE;
+const registrationListTitle = process.env.LIST_TITLE;
 const trainingListTitle = process.env.TRAINING_LIST_TITLE;
 const emailService = process.env.EMAIL_SERVICE;
 const emailUser = process.env.EMAIL_USER;
@@ -59,8 +59,11 @@ async function createListItem(data, listTitle, file) {
             //await updateListItemAttachment(listTitle, itemId, file);
         }
 
-        // Send email notification
-        await sendEmailNotification(data.FirstName, data.Email, data);
+        // if the list is equal to registrationListTitle then send email notification
+        if (listTitle === registrationListTitle) {
+            // Send email notification
+            await sendEmailNotification(data.FirstName, data.Email, data);
+        }
 
         return listItemResponse;
     } catch (error) {

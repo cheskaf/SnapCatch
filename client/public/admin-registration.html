@@ -800,8 +800,7 @@
                     <form
                       class="add-new-user pt-0 fv-plugins-bootstrap5 fv-plugins-framework"
                       id="addNewUserForm"
-                      onsubmit="return false"
-                      novalidate="novalidate"
+                      method="post" enctype="multipart/form-data" onsubmit="return false"
                     >
                       <div class="mb-3 fv-plugins-icon-container">
                         <label class="form-label" for="firstName"
@@ -836,50 +835,74 @@
                         ></div>
                       </div>
                       <div class="mb-3 fv-plugins-icon-container">
-                        <label class="form-label" for="add-user-email"
+                        <label class="form-label" for="email"
                           >Email</label
                         >
                         <input
                           type="text"
-                          id="add-user-email"
+                          id="email"
                           class="form-control"
                           placeholder="john.doe@example.com"
                           aria-label="john.doe@example.com"
-                          name="userEmail"
+                          name="email"
                         />
                         <div
                           class="fv-plugins-message-container invalid-feedback"
                         ></div>
                       </div>
                       <div class="mb-3">
-                        <label class="form-label" for="add-user-contact"
+                        <label class="form-label" for="contactNumber"
                           >Contact Number</label
                         >
                         <input
                           type="text"
-                          id="add-user-contact"
+                          id="contactNumber"
                           class="form-control phone-mask"
                           placeholder="+1 (609) 988-44-11"
                           aria-label="john.doe@example.com"
-                          name="userContact"
+                          name="contactNumber"
                         />
                       </div>
                       <div class="mb-3">
-                        <label class="form-label" for="add-user-company"
+                        <label class="form-label" for="companyName"
                           >Company Name</label
                         >
                         <input
                           type="text"
-                          id="add-user-company"
+                          id="companyName"
                           class="form-control"
                           placeholder="XYZ Inc."
                           aria-label="jdoe1"
                           name="companyName"
                         />
                       </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="fileInput"
+                          >Attachment</label
+                        >
+                        <input
+                          type="file"
+                          id="fileInput"
+                          class="form-control"
+                          placeholder="XYZ Inc."
+                          aria-label="jdoe1"
+                          name="fileInput"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="training"
+                          >Training</label>
+                        <select id="trainingId" class="form-select">
+                          <option value="">Select Training</option>
+                          <!--Iterate through the training list to use as options-->
+                          <% trainingListData.d.results.forEach(item => { %>
+                            <option value="<%= item.Id %>"><%= item.Title %></option>
+                          <% }); %>
+                        </select>
+                      </div>
                       <button
                         type="submit"
-                        class="btn btn-primary me-sm-3 me-1 data-submit waves-effect waves-light"
+                        class="btn btn-primary me-sm-3 me-1 data-submit waves-effect waves-light" id="addNewRegistrationSubmit"
                       >
                         Submit
                       </button>
@@ -892,6 +915,21 @@
                       </button>
                       <input type="hidden" />
                     </form>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Bootstrap modal for successful submission -->
+              <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <h5 class="modal-title mb-3" id="successModalLabel">Success!</h5>
+                      Thank you for registering! Your submission has been successful. An email with further details and a link will be sent shortly.
+                    </div>
+                    <div class="modal-footer border border-0">
+                      <button type="button" class="btn btn-label-secondary waves-effect alertsuccess" data-bs-dismiss="modal">Close</button>
+                    </div>
                   </div>
                 </div>
               </div>

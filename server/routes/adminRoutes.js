@@ -52,7 +52,11 @@ router.get('/manage/registrations', async (req, res) => {
             item.formattedDateCreated = formatDate(item.Created);
             item.initials = item.FirstName.charAt(0) + item.LastName.charAt(0);
         });
-        res.render('admin-registration', { registrationListData });
+        
+        // Fetch training list data
+        const trainingListData = await initializeTrainingListData(siteUrl, credentials, trainingListTitle);
+        
+        res.render('admin-registration', { registrationListData, trainingListData });
     } catch (error) {
         console.error('Error fetching registration list data:', error);
         res.status(500).send('Internal server error');
@@ -66,6 +70,7 @@ router.get('/manage/trainings', async (req, res) => {
         const trainingListData = await initializeTrainingListData(siteUrl, credentials, trainingListTitle);
         // Format dates before passing them to the HTML template
         trainingListData.d.results.forEach(item => {
+            item.formattedDateCreated = formatDate(item.Created);
             item.formattedDateFrom = formatDate(item.DateFrom);
             item.formattedDateTo = formatDate(item.DateTo);
             item.initials = item.Title.charAt(0);

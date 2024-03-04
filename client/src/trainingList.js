@@ -48,7 +48,7 @@ async function generateQRCode(url) {
 // Modify the generateUniqueUrls function to include QR code URL
 async function generateUniqueUrls(data) {
     try {
-        for (const item of data.d.results) {
+        data.d.results.forEach(async (item) => {
             const encodedID = encodeURIComponent(item.ID);
             const encodedTitle = encodeURIComponent(item.Title);
             const encodedDateFrom = encodeURIComponent(item.DateFrom);
@@ -60,7 +60,7 @@ async function generateUniqueUrls(data) {
             // Generate QR code URL
             const qrCodeUrl = await generateQRCode(item.uniqueUrl);
             item.qrCodeUrl = qrCodeUrl;
-        }
+        });
     } catch (error) {
         throw error;
     }
