@@ -41,17 +41,33 @@ router.get('/test', (req, res) => {
 });
 
 router.get('/register', async (req, res) => {
-    // Extract data from query parameters
-    const { id, title, dateFrom, dateTo, location } = req.query;
-    // Format dateFrom and dateTo
-    const formattedDateFrom = formatDate(dateFrom);
-    const formattedDateTo = formatDate(dateTo);
-     // Generate QR code URL for the registration
-    const qrCodeUrl = await generateQRCode(req.originalUrl);
-    // Get the current URL
-    const currentUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
-    // Now you can use these values as needed
-    res.render('user-registration', { id, title, formattedDateFrom, formattedDateTo, location, qrCodeUrl, currentUrl });
+    // Fetch training list data
+    const trainingListData = await initializeTrainingListData(siteUrl, credentials, trainingListTitle);
+
+    // Extract id from query parameters
+    const { id } = req.query;
+
+    // Check if id exists in training list data
+    const trainingData = trainingListData.d.results.find(item => item.ID == id);
+
+    if (!trainingData) {
+        res.render('user-registration', { message: 'Training is not available' });
+    } else {
+        // Extract data from trainingData
+        const { title, dateFrom, dateTo, location } = trainingData;
+
+        // Format dateFrom and dateTo
+        const formattedDateFrom = formatDate(dateFrom);
+        const formattedDateTo = formatDate(dateTo);
+
+        // Generate QR code URL for the registration
+        const qrCodeUrl = await generateQRCode(req.originalUrl);
+
+        // Get the current URL
+        const currentUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
+
+        res.render('user-registration', { id, title, formattedDateFrom, formattedDateTo, location, qrCodeUrl, currentUrl });
+    }
 });
 
 // Endpoint to render HTML template with training list data
@@ -63,6 +79,7 @@ router.get('/trainings', async (req, res) => {
         trainingListData.d.results.forEach(item => {
             item.formattedDateFrom = formatDate(item.DateFrom);
             item.formattedDateTo = formatDate(item.DateTo);
+            console.log("ID:", item.ID);
         });
         res.render('user-traininglist', { trainingListData });
     } catch (error) {
