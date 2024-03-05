@@ -624,7 +624,7 @@
                         <div class="modal fade" id="editModal_<%= item.Id %>" tabindex="-1" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                              <form method="post" enctype="multipart/form-data" onsubmit="return false">
+                              <form method="post" enctype="multipart/form-data" class="updateItemForm" id="updateItemForm_<%= item.Id %>" onsubmit="return false">
                                 <div class="modal-header">
                                   <h5 class="modal-title" id="editModalLabel">Edit Registration</h5>
                                   <button
@@ -680,7 +680,7 @@
                                   <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
                                     Cancel
                                   </button>
-                                  <button type="button" class="btn btn-primary" id="updateRegistrationButton">Save changes</button>
+                                  <button type="submit" class="btn btn-primary updateRegistrationButton" id="updateRegistrationButton" data-record-id="<%= item.Id %>">Save changes</button>
                                 </div>
                               </form>
                             </div>

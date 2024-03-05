@@ -96,33 +96,37 @@ $(document).ready(function () {
         location.reload();
     });
     
-    // Event delegation for clicking the updateRegistrationButton
-    $(document).on('click', '#updateRegistrationButton', function () {
-        // Extract form data including file
-        var formData = extractFormData(); // Invoke the function
-        console.log("Extracted Form Data:", formData); // Log the FormData object
-        
-        // Get the id from registrationId input field
-        var registrationId = $('#registrationId').val();    
-        console.log("Registration ID:", registrationId); // Log the registration ID    
+    // Event listener for update button click
+    $('.updateRegistrationButton').click(function () {
+        // Get the registrationId from the data attribute
+        var updateItemId = $(this).data("record-id"); // Use "record-id" instead of "record-Id"
 
-        // Send form data to Node.js server using AJAX with multipart/form-data
-        $.ajax({
-            type: "PUT", // Change POST to PUT
-            url: "http://localhost:3000/api/update-list-item/CNECustomerRegistrationForm/" + registrationId,
-            data: formData,
-            contentType: false,
-            processData: false,
-            // Update the success callback function
-            success: function (response) {
-                // Show the success modal
-                $('#successModal').modal('show');
-            },
-            error: function (xhr, status, error) {
-                console.error("Error:", error);
-                // Optionally, handle error
-            },
-        });
+        // Find the parent modal of the clicked button
+        var modal = $(this).closest('.modal');
+
+        // Get the values from input fields within the modal
+        var lastName = modal.find('#lastName').val();
+        var firstName = modal.find('#firstName').val();
+        var email = modal.find('#email').val();
+        var contactNumber = modal.find('#contactNumber').val();
+        var companyName = modal.find('#companyName').val();
+
+        // Create the updatedItem object
+        const updatedItem = {
+            __metadata: { type: 'SP.Data.CNECustomerRegistrationFormListItem' },
+            LastName: lastName,
+            FirstName: firstName,
+            Email: email,
+            ContactNumber: contactNumber,
+            CompanyName: companyName
+        };
+
+
+        console.log("Item ID to Update:", updateItemId);
+        console.log("Updated Item:", updatedItem);
+        updateListItem(updateItemId, updatedItem);
+
+        // Close the modal
     });
 
 });
@@ -158,6 +162,40 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+function updateListItem(itemId, updatedItem) {
+    console.log("Updating item with ID:", itemId);
+    fetch(`http://localhost:3000/api/update-list-item/CNECustomerRegistrationForm/${itemId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedItem) // Convert to JSON string
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}\n${JSON.stringify(response.body)}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data === undefined) {
+            console.error("Error: Item update response is undefined.");
+            return;
+        }
+        console.log("Item updated successfully.");
+        
+        // Close all modals with id starting with editModal_
+        $('div[id^="editModal_"]').modal('hide');            
+        
+        // Reload the page to reflect the changes
+        location.reload();
+    })
+    .catch(error => {
+        console.error("Error updating item:", error.message); // Log the error message
+    });    
+}
+
 
 function extractFormData() {
     try {

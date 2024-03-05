@@ -51,6 +51,7 @@ async function createListItem(data, listTitle, file) {
         });
 
         const itemId = listItemResponse.body.d.Id; // Get the item ID from the response
+        console.log('ItemID from createListItem:', itemId)
 
         // Upload attachment if file is present
         if (file) {

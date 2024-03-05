@@ -169,23 +169,60 @@ app.delete('/api/delete-list-item/:listTitle/:itemId', async (req, res) => {
 // Require the updateListItem function from the registration.js file
 const { updateListItem } = require('../client/assets/js/admin-registrations');
 
-//----------UPDATE----------------
-app.put('/api/update-list-item/:listTitle/:itemId', async (req, res) => {
+// ----------------- UPDATE ---------------------------
+// Route to handle update requests for list items
+app.post('/api/update-list-item/:listTitle/:itemId', async (req, res) => {
     try {
-        const { listTitle, itemId } = req.params;
-        console.log ("listTitle, itemId", listTitle, itemId)
-        const data = req.body;
-        console.log ("data", data)
+        const listTitle = req.params.listTitle;
+        const itemId = req.params.itemId;
+        const updatedItem = req.body;
 
-        await updateListItem(listTitle, itemId, data);
+        const options = await spAuth.getAuth(siteUrl, credentials);
+        const digest = options.headers['X-RequestDigest'];
+        const headers = {
+            ...options.headers,
+            'X-RequestDigest': digest,
+            'X-HTTP-Method': 'MERGE', // Use MERGE for update
+            'If-Match': '*', // Update regardless of version
+            'Content-Type': 'application/json;odata=verbose' // Ensure correct content type
+        };
 
-        res.status(200).json({ message: 'Item updated successfully' });
+        const response = await requestPromise.post({
+            url: `${siteUrl}/_api/web/lists/getbytitle('${listTitle}')/items(${itemId})`,
+            headers: headers,
+            body: updatedItem, // Send updated item as JSON
+            json: true
+        });
+
+        console.log('Item updated successfully');
+        res.json({ message: 'Item updated successfully' });
     } catch (error) {
         console.error('Error updating item:', error);
-        res.status(500).json({ error: 'Failed to update item' });
+        res.status(500).send('An error occurred while updating the item.');
     }
 });
+/*
+app.post('/api/update-list-item/:listTitle/:itemId', upload.single('file'), async (req, res) => {
+    try {
+        const listTitle = req.params.listTitle;
+        const itemId = req.params.itemId;
+        const data = req.body;
+        const file = req.file;
 
+        console.log('Received data:', data);
+        console.log('List title:', listTitle);
+        console.log('Item ID from API:', itemId);
+
+        const listItemResponse = await createListItem(data, listTitle, file);
+
+        // Send a simplified response without circular references
+        res.status(201).json({ message: 'Item created successfully', itemId: listItemResponse.body.d.Id });
+    } catch (error) {
+        console.error('Error creating item:', error);
+        res.status(500).json({ error: 'Failed to create item' });
+    }
+});
+*/
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
