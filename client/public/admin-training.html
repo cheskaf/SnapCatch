@@ -609,51 +609,53 @@
                         <div class="modal fade" id="editModal_<%= item.Id %>" tabindex="-1" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="editModalLabel">Edit Training</h5>
-                                <button
-                                  type="button"
-                                  class="btn-close"
-                                  data-bs-dismiss="modal"
-                                  aria-label="Close"
-                                ></button>
-                              </div>
-                              <div class="modal-body">
-                                <div class="row">
-                                  <div class="col mb-3">
-                                    <label for="nameBasic" class="form-label">Title</label>
-                                    <input type="text" id="nameBasic" class="form-control" placeholder="Training Name" value="<%= item.Title %>"/>
+                              <form method="post" enctype ="multipart/form-data" class="updateItemForm" id="updateItemForm_<%= item.Id%>" onsubmit="return false">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="editModalLabel">Edit Training</h5>
+                                  <button
+                                    type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                  ></button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="row">
+                                    <div class="col mb-3">
+                                      <label for="nameBasic" class="form-label">Title</label>
+                                      <input type="text" id="title" class="form-control" placeholder="Training Name" value="<%= item.Title %>"/>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col mb-3">
+                                      <label for="emailBasic" class="form-label">Location</label>
+                                      <input
+                                        type="text"
+                                        id="location"
+                                        class="form-control"
+                                        placeholder="Virtual - MS Teams"
+                                        value = "<%= item.Location %>"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="row g-2">
+                                    <div class="col mb-0">
+                                      <label for="dobBasic" class="form-label">Start Date</label>
+                                      <input type="datetime-local" id="dateFrom" class="form-control" placeholder="DD / MM / YY" value="<%= item.dateFrom %>"/>
+                                    </div>
+                                    <div class="col mb-0">
+                                      <label for="dobBasic" class="form-label">End Date</label>
+                                      <input type="datetime-local" id="dateTo" class="form-control" placeholder="DD / MM / YY" value="<%= item.dateTo %>" />
+                                    </div>
                                   </div>
                                 </div>
-                                <div class="row">
-                                  <div class="col mb-3">
-                                    <label for="emailBasic" class="form-label">Location</label>
-                                    <input
-                                      type="text"
-                                      id="emailBasic"
-                                      class="form-control"
-                                      placeholder="Virtual - MS Teams"
-                                      value = "<%= item.Location %>"
-                                    />
-                                  </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                                    Cancel
+                                  </button>
+                                  <button type="submit" class="btn btn-primary updateTrainingListButton" data-record-id="<%= item.Id %>">Save changes</button>
                                 </div>
-                                <div class="row g-2">
-                                  <div class="col mb-0">
-                                    <label for="dobBasic" class="form-label">Start Date</label>
-                                    <input type="datetime-local" id="dobBasic" class="form-control" placeholder="DD / MM / YY" value="<%= item.dateFrom %>"/>
-                                  </div>
-                                  <div class="col mb-0">
-                                    <label for="dobBasic" class="form-label">End Date</label>
-                                    <input type="datetime-local" id="dobBasic" class="form-control" placeholder="DD / MM / YY" value="<%= item.dateTo %>" />
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
-                                  Cancel
-                                </button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                              </div>
+                              </form>
                             </div>
                           </div>
                         </div>

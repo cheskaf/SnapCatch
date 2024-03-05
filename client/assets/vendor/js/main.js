@@ -128,6 +128,36 @@ $(document).ready(function () {
 
         // Close the modal
     });
+    // Event listener for update TrainingList
+    $('.updateTrainingListButton').click(function () {
+        // Get the registrationId from the data attribute
+        var updateItemId = $(this).data("record-id"); // Use "record-id" instead of "record-Id"
+
+        // Find the parent modal of the clicked button
+        var modal = $(this).closest('.modal');
+
+        // Get the values from input fields within the modal
+        var title = modal.find('#title').val();
+        var location = modal.find('#location').val();
+        var dateFrom = modal.find('#dateFrom').val();
+        var dateTo = modal.find('#dateTo').val();
+
+        // Create the updatedItem object
+        const updatedItem = {
+            __metadata: { type: 'SP.Data.TrainingListListItem' },
+            Title: title,
+            Location: location,
+            DateFrom: dateFrom,
+            DateTo: dateTo,
+        };
+
+
+        console.log("Item ID to Update:", updateItemId);
+        console.log("Updated Item:", updatedItem);
+        updateTrainingListItem(updateItemId, updatedItem);
+
+        // Close the modal
+    });
 
 });
 
@@ -166,6 +196,41 @@ document.addEventListener('DOMContentLoaded', function() {
 function updateListItem(itemId, updatedItem) {
     console.log("Updating item with ID:", itemId);
     fetch(`http://localhost:3000/api/update-list-item/CNECustomerRegistrationForm/${itemId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedItem) // Convert to JSON string
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}\n${JSON.stringify(response.body)}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data === undefined) {
+            console.error("Error: Item update response is undefined.");
+            return;
+        }
+        console.log("Item updated successfully.");
+        
+        // Close all modals with id starting with editModal_
+        $('div[id^="editModal_"]').modal('hide');            
+        
+        // Reload the page to reflect the changes
+        location.reload();
+    })
+    .catch(error => {
+        console.error("Error updating item:", error.message); // Log the error message
+    });    
+}
+
+//UPDATE TRAINING LIST 
+
+function updateTrainingListItem(itemId, updatedItem) {
+    console.log("Updating item with ID:", itemId);
+    fetch(`http://localhost:3000/api/update-list-item/TrainingList/${itemId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
