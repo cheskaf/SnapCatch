@@ -88,7 +88,7 @@ async function generateUniqueUrls(data) {
             const encodedLocation = encodeURIComponent(item.Location);
 
             // Construct unique URL with hashed value, training ID, and title
-            item.uniqueUrl = `/register/${encodedID}/${encodedTitle}/${encodedHash}?dateFrom=${encodedDateFrom}&dateTo=${encodedDateTo}&location=${encodedLocation}`;
+            item.uniqueUrl = `/register/${encodedID}/${encodedTitle}/${encodedHash}?details=${encodedDateFrom}-${encodedDateTo}-${encodedLocation}`;
 
             // Generate QR code URL
             const qrCodeUrl = await generateQRCode(item.uniqueUrl);

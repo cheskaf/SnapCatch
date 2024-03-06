@@ -624,7 +624,7 @@
                         <div class="modal fade" id="editModal_<%= item.Id %>" tabindex="-1" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                              <form method="post" enctype="multipart/form-data" class="updateItemForm" id="updateItemForm_<%= item.Id %>" onsubmit="return false">
+                              <form method="post" action="" enctype="multipart/form-data" class="updateItemForm needs-validation" id="updateItemForm" onsubmit="return false" novalidate>
                                 <div class="modal-header">
                                   <h5 class="modal-title" id="editModalLabel">Edit Registration</h5>
                                   <button
@@ -638,11 +638,15 @@
                                   <div class="row g-2">
                                     <div class="col mb-3">
                                       <label for="firstName" class="form-label">First Name</label>
-                                      <input type="text" id="firstName" class="form-control" placeholder="Enter Name" value="<%= item.FirstName %>" />
+                                      <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter Name" value="<%= item.FirstName %>" required />
+                                      <div class="valid-feedback">Looks good!</div>
+                                      <div class="invalid-feedback">Please enter a first name</div>
                                     </div>
                                     <div class="col mb-3">
                                       <label for="lastName" class="form-label">Last Name</label>
-                                      <input type="text" id="lastName" class="form-control" placeholder="Enter Name" value="<%= item.LastName %>" />
+                                      <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter Name" value="<%= item.LastName %>" required />
+                                      <div class="valid-feedback">Looks good!</div>
+                                      <div class="invalid-feedback">Please enter a first name</div>
                                     </div>
                                   </div>
                                   <div class="row g-2">
@@ -650,27 +654,36 @@
                                       <label for="email" class="form-label">Email</label>
                                       <input
                                         type="email"
-                                        id="email"
+                                        id="email" name="email"
                                         class="form-control"
                                         placeholder="xxxx@xxx.xx"
                                         value="<%= item.Email %>"
+                                        required
                                       />
+                                      <div class="valid-feedback">Looks good!</div>
+                                      <div class="invalid-feedback">Please enter an email</div>
                                     </div>
                                     <div class="col mb-3">
                                       <label for="contactNumber" class="form-label">Contact Number</label>
-                                      <input type="number" id="contactNumber" class="form-control" placeholder="09123456789" value="<%= item.ContactNumber %>"/>
+                                      <input type="tel" id="contactNumber" name="contactNumber" class="form-control" placeholder="09123456789" value="<%= item.ContactNumber %>" required />
+                                      <div class="valid-feedback">Looks good!</div>
+                                      <div class="invalid-feedback">Please enter a contact number</div>
                                     </div>
                                   </div>
                                   <div class="row">
                                     <div class="col mb-3">
                                       <label for="companyName" class="form-label">Company Name</label>
-                                      <input type="text" id="companyName" class="form-control" placeholder="Company Name" value="<%= item.CompanyName %>" />
+                                      <input type="text" id="companyName" name="companyName" class="form-control" placeholder="Company Name" value="<%= item.CompanyName %>" required />
+                                      <div class="valid-feedback">Looks good!</div>
+                                      <div class="invalid-feedback">Please enter a company name</div>
                                     </div>
                                   </div>
                                   <div class="row">
                                     <div class="col mb-0">
                                       <label for="fileInput" class="form-label">Attachment</label>
-                                      <input type="file" id="fileInput" class="form-control" />
+                                      <input type="file" id="fileInput" name="fileInput" class="form-control" />
+                                      <div class="valid-feedback">Looks good!</div>
+                                      <div class="invalid-feedback">Please upload an ID</div>
                                     </div>
                                   </div>
                                   <input type="hidden" id="trainingId" value="<%= item.TrainingScheduleId %>" />
@@ -808,9 +821,10 @@
                   </div>
                   <div class="offcanvas-body mx-0 flex-grow-0 pt-0 h-100">
                     <form
-                      class="add-new-user pt-0 fv-plugins-bootstrap5 fv-plugins-framework"
+                      class="add-new-user pt-0 needs-validation"
                       id="addNewUserForm"
                       method="post" enctype="multipart/form-data" onsubmit="return false"
+                      novalidate
                     >
                       <div class="mb-3 fv-plugins-icon-container">
                         <label class="form-label" for="firstName"
@@ -823,10 +837,10 @@
                           placeholder="John"
                           name="firstName"
                           aria-label="John"
+                          required
                         />
-                        <div
-                          class="fv-plugins-message-container invalid-feedback"
-                        ></div>
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please enter a first name</div>
                       </div>
                       <div class="mb-3 fv-plugins-icon-container">
                         <label class="form-label" for="lastName"
@@ -839,39 +853,42 @@
                           placeholder="Doe"
                           name="lastName"
                           aria-label="Doe"
+                          required
                         />
-                        <div
-                          class="fv-plugins-message-container invalid-feedback"
-                        ></div>
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please enter a last name</div>
                       </div>
                       <div class="mb-3 fv-plugins-icon-container">
                         <label class="form-label" for="email"
                           >Email</label
                         >
                         <input
-                          type="text"
+                          type="email"
                           id="email"
                           class="form-control"
                           placeholder="john.doe@example.com"
                           aria-label="john.doe@example.com"
                           name="email"
+                          required
                         />
-                        <div
-                          class="fv-plugins-message-container invalid-feedback"
-                        ></div>
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please enter an email</div>
                       </div>
                       <div class="mb-3">
                         <label class="form-label" for="contactNumber"
                           >Contact Number</label
                         >
                         <input
-                          type="text"
+                          type="tel"
                           id="contactNumber"
                           class="form-control phone-mask"
-                          placeholder="+1 (609) 988-44-11"
+                          placeholder="9012345678"
                           aria-label="john.doe@example.com"
                           name="contactNumber"
+                          required
                         />
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please enter a contact number</div>
                       </div>
                       <div class="mb-3">
                         <label class="form-label" for="companyName"
@@ -884,7 +901,10 @@
                           placeholder="XYZ Inc."
                           aria-label="jdoe1"
                           name="companyName"
+                          required
                         />
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please enter a company name</div>
                       </div>
                       <div class="mb-3">
                         <label class="form-label" for="fileInput"
@@ -897,18 +917,23 @@
                           placeholder="XYZ Inc."
                           aria-label="jdoe1"
                           name="fileInput"
+                          required
                         />
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please upload an ID</div>
                       </div>
                       <div class="mb-3">
                         <label class="form-label" for="training"
                           >Training</label>
-                        <select id="trainingId" class="form-select">
+                        <select id="trainingId" class="form-select" required>
                           <option value="">Select Training</option>
                           <!--Iterate through the training list to use as options-->
                           <% trainingListData.d.results.forEach(item => { %>
                             <option value="<%= item.Id %>"><%= item.Title %></option>
                           <% }); %>
                         </select>
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please select a training</div>
                       </div>
                       <button
                         type="submit"
@@ -1016,5 +1041,6 @@
     <!-- Main JS -->
     <script src="js/main.js"></script>
     <script src="vendor/js/main.js"></script>
+    <script src="../../../vendor/js/bootstrap-validation.js"></script>
   </body>
 </html>

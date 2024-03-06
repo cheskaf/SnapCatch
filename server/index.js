@@ -63,8 +63,8 @@ const userRoutes = require('./routes/userRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 
 // Use route handler modules
-app.use('/', userRoutes);
 app.use('/admin', adminRoutes);
+app.use('/', userRoutes);
 
 // Get authentication headers for SharePoint API requests
 spAuth.getAuth(siteUrl, credentials)

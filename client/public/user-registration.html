@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="../../../vendor/css/rtl/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="../../../vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="../../../css/demo.css" />
+    <link rel="stylesheet" href="../../../css/custom.css" />
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="../../../vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
@@ -180,54 +181,73 @@
                 <div class="col-md-6">
                   <input type="hidden" id="trainingId" value="<%= id %>">
                   <h3 class="fw-bold"><%= title %></h3>
-                  <p>From: <%= formattedDateFrom %></p>
-                  <p>To: <%= formattedDateTo %></p>
-                  <p>Location: <%= location %></p>
+                  <div class="row">
+                    <div class="col-3 col-sm-2"><strong>Schedule</strong></div>
+                    <div class="col"><%= formattedDateFrom %> to</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-3 col-sm-2"><!--<strong>To</strong>--></div>
+                    <div class="col"><%= formattedDateTo %></div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-3 col-sm-2"><strong>Details</strong></div>
+                    <div class="col"><%= location %></div>
+                  </div>
                   <button
                     class="btn btn-sm btn-label-primary mb-4 mb-md-0" data-bs-toggle="modal" data-bs-target="#shareModal"
                     >Share</button>
                 </div>
                 
                 <div class="col-md-6">
-                  <form id="registrationForm" action="" method="post" enctype="multipart/form-data">
+                  <form id="registrationForm" action="" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                     <div class="row g-3">
                       <div class="col-md-6">
                         <label class="form-label" for="firstName">First Name</label>
                         <input type="text" id="firstName" class="form-control" required />
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please enter your first name</div>
                       </div>
                       <div class="col-md-6">
                         <label class="form-label" for="lastName">Last Name</label>
                         <input type="text" id="lastName" class="form-control" required />
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please enter your last name</div>
                       </div>
                       <div class="col-md-6">
                         <label class="form-label" for="email">Email</label>
-                        <div class="input-group input-group-merge">
-                          <input
+                        <input
                             class="form-control"
-                            type="text"
+                            type="email"
                             id="email"
                             name="email"
                             aria-describedby="email3"
                             required
-                          />
-                        </div>
+                        />
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please enter your email</div>
                       </div>
                       <div class="col-md-6">
                         <label class="form-label" for="contactNumber">Contact Number</label>
                         <input
-                          type="text"
+                          type="tel"
                           id="contactNumber"
                           class="form-control phone-mask"
                           required
                         />
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please enter your contact number</div>
                       </div>
                       <div class="col-md-6">
                         <label class="form-label" for="companyName">Company Name</label>
                         <input type="text" id="companyName" class="form-control" required />
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please enter your company name</div>
                       </div>
                       <div class="col-md-6">
                         <label class="form-label" for="fileInput">Attachment</label>
                         <input type="file" id="fileInput" class="form-control" required />
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please attach your ID</div>
                       </div>
                     </div>
                     <div class="row mt-3">
@@ -274,7 +294,7 @@
                   </div>
                   <div class="modal-body text-center"> <!-- Added text-center class -->
                     <img src="<%= qrCodeUrl %>">
-                    <p class="mt-3">Share by scanning the qr code</p>
+                    <p class="mt-3">Share this QR code or copy the link below to easily register for the <%= title %> Training</p>
                     <div class="url-box">
                       <input type="text" id="urlInput" value="<%= currentUrl %>" class="form-control d-inline" style="width:auto" onclick="copyToClipboard()" readonly>
                       <button onclick="copyToClipboard()" class="btn btn-label-primary d-inline-block">Copy</button>
@@ -300,15 +320,7 @@
                     <script>
                       document.write(new Date().getFullYear());
                     </script>
-                    , made with ❤️ by <a href="https://pixinvent.com" target="_blank" class="fw-semibold">Pixinvent</a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/documentation/"
-                      target="_blank"
-                      class="footer-link me-4"
-                      >Documentation</a
-                    >
+                    SnapCatch
                   </div>
                 </div>
               </div>
@@ -366,5 +378,6 @@
 
     <!-- Page JS -->
     <script src="../../../vendor/js/main.js"></script>
+    <script src="../../../vendor/js/bootstrap-validation.js"></script>
   </body>
 </html>

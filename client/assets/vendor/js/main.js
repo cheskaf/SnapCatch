@@ -27,6 +27,10 @@ $(document).ready(function () {
             success: function (response) {
                 // Show the success modal
                 $('#successModal').modal('show');
+                // when the success modal is dismissed, hard reload the site
+                $('#successModal').on('hidden.bs.modal', function () {
+                    location.reload(true);
+                });
             },
             error: function (xhr, status, error) {
                 console.error("Error:", error);
@@ -86,7 +90,6 @@ $(document).ready(function () {
             },
         });
     });
-    
     
     // Event listener for clicking the .alertsuccess button
     $('.alertsuccess').click(function () {

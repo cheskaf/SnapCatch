@@ -104,4 +104,10 @@ router.get('/trainings', async (req, res) => {
     }
 });
 
+// Define a route to handle all unmatched routes
+router.get('*', (req, res) => {
+    res.status(404).render('page-not-found');
+});
+
+
 module.exports = router;
