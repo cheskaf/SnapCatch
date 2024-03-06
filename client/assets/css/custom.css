@@ -3,7 +3,7 @@
     background: url("../../../img/pages/header.png");
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 700px !important;
+    min-height: 350px !important;
 }
 
 .help-center-header .input-wrapper, .help-center-header .header-description {
@@ -12,12 +12,19 @@
     max-width: 55%;
 }
 
+.headercontainer {
+    width: 50%;
+}
+
 @media (max-width: 575.98px) {
     .help-center-header .input-wrapper {
         max-width: 70%;
     }
     .help-center-header .header-description{
         max-width: 90%;
+    }
+    .headercontainer {
+        width: 100%;
     }
 }
 
@@ -30,7 +37,7 @@
 }
 
 .dark-style .bg-help-center {
-    background-color: #2f3349;
+    background-color: #201F38;
 }
 
 .dark-style .help-center-bg-alt {

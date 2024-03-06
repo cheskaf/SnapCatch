@@ -76,11 +76,11 @@ html:not([dir=rtl]) .bg-menu-theme.menu-horizontal .menu-inner > .menu-item > .m
 }
 
 body {
-  background: #25293c;
+  background: #100A23;
 }
 
 .bg-body {
-  background: #25293c !important;
+  background: #100A23 !important;
 }
 
 .text-primary {
@@ -104,8 +104,8 @@ a.bg-primary:hover, a.bg-primary:focus {
 }
 
 .bg-label-primary {
-  background-color: #3a3b64 !important;
-  color: #7367f0 !important;
+  background-color: #2d1a2b !important;
+  color: #ae5dad !important;
 }
 
 .bg-primary.bg-glow {
@@ -114,8 +114,8 @@ a.bg-primary:hover, a.bg-primary:focus {
 
 .page-item.active .page-link,
 .pagination li.active > a:not(.page-link) {
-  border-color: #7367f0;
-  background-color: #7367f0;
+  border-color: #AD6CA5;
+  background-color: #AD6CA5;
   color: #fff;
 }
 
@@ -276,8 +276,8 @@ button.list-group-item-primary.active {
 
 .btn-primary {
   color: #fff;
-  background-color: #7367f0;
-  border-color: #7367f0;
+  background-color: #ae5dad;
+  border-color: #ae5dad;
 }
 .btn-primary:hover {
   color: #fff !important;
@@ -309,9 +309,9 @@ button.list-group-item-primary.active {
 }
 
 .btn-label-primary {
-  color: #7367f0;
+  color: #ae5dad;
   border-color: transparent;
-  background: #3a3b64;
+  background: #2d1a2b;
 }
 .btn-label-primary.waves-effect .waves-ripple {
   background: radial-gradient(rgba(115, 103, 240, 0.2) 0, rgba(115, 103, 240, 0.3) 40%, rgba(115, 103, 240, 0.4) 50%, rgba(115, 103, 240, 0.5) 60%, rgba(255, 255, 255, 0) 70%);
@@ -1247,7 +1247,7 @@ li.ui-timepicker-selected,
 }
 
 .bg-navbar-theme {
-  background-color: rgba(47, 51, 73, 0.95) !important;
+  background-color: #0A021B !important;
   color: #b6bee3;
 }
 .bg-navbar-theme .navbar-brand,
@@ -1265,7 +1265,7 @@ li.ui-timepicker-selected,
 }
 .bg-navbar-theme .search-input-wrapper .search-input,
 .bg-navbar-theme .search-input-wrapper .search-toggler {
-  background-color: #2f3349 !important;
+  background-color: #201F38 !important;
   color: #b6bee3;
 }
 .bg-navbar-theme .navbar-nav > .nav-link,
@@ -1335,16 +1335,16 @@ li.ui-timepicker-selected,
   -webkit-backdrop-filter: saturate(200%) blur(10px);
           backdrop-filter: saturate(200%) blur(10px);
   background: linear-gradient(180deg, rgba(37, 41, 60, 0.7) 44%, rgba(37, 41, 60, 0.43) 73%, rgba(37, 41, 60, 0));
-  -webkit-mask: linear-gradient(#25293c, #25293c 18%, transparent 100%);
-  mask: linear-gradient(#25293c, #25293c 18%, transparent 100%);
+  -webkit-mask: linear-gradient(#100A23, #100A23 18%, transparent 100%);
+  mask: linear-gradient(#100A23, #100A23 18%, transparent 100%);
 }
 
 .bg-menu-theme {
-  background-color: #2f3349 !important;
+  background-color: #201F38 !important;
   color: #b6bee3;
 }
 .bg-menu-theme.menu-horizontal {
-  background-color: rgba(47, 51, 73, 0.95) !important;
+  background-color: #1B1831 !important;
 }
 .bg-menu-theme .menu-link,
 .bg-menu-theme .menu-horizontal-prev,
@@ -1373,8 +1373,8 @@ li.ui-timepicker-selected,
   color: #cfd3ec;
 }
 .bg-menu-theme.menu-vertical .menu-item.active > .menu-link:not(.menu-toggle) {
-  background: linear-gradient(72.47deg, #7367f0 22.16%, rgba(115, 103, 240, 0.7) 76.47%);
-  box-shadow: 0px 2px 6px 0px rgba(115, 103, 240, 0.48);
+  background: linear-gradient(72.47deg, #a05f98 22.16%, rgba(199, 73, 182, 0.7) 76.47%);
+  box-shadow: 0px 2px 6px 0px rgba(191, 86, 200, 0.48);
   color: #fff !important;
 }
 [dir=rtl] .bg-menu-theme.menu-vertical .menu-item.active > .menu-link:not(.menu-toggle) {
@@ -1392,7 +1392,7 @@ li.ui-timepicker-selected,
 }
 .bg-menu-theme.menu-horizontal .menu-inner .menu-item:not(.menu-item-closing) > .menu-sub,
 .bg-menu-theme.menu-horizontal .menu-inner .menu-item.open > .menu-toggle {
-  background: #2f3349;
+  background: #201F38;
 }
 .bg-menu-theme.menu-horizontal .menu-item.active > .menu-link:not(.menu-toggle) {
   background: #343756;
@@ -1404,7 +1404,7 @@ li.ui-timepicker-selected,
   color: #fff;
 }
 .bg-menu-theme .menu-inner-shadow {
-  background: linear-gradient(#2f3349 41%, rgba(47, 51, 73, 0.11) 95%, rgba(47, 51, 73, 0));
+  background: linear-gradient(#201F38 41%, rgba(47, 51, 73, 0.11) 95%, rgba(47, 51, 73, 0));
 }
 .bg-menu-theme .menu-text {
   color: #cfd3ec;
@@ -1441,11 +1441,11 @@ html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item:not(.acti
 }
 
 .layout-footer-fixed .layout-horizontal .bg-footer-theme {
-  background-color: #25293c !important;
+  background-color: #100A23 !important;
   color: #b6bee3;
 }
 .layout-footer-fixed .layout-wrapper:not(.layout-horizontal) .bg-footer-theme .footer-container {
-  background-color: #25293c !important;
+  background-color: #100A23 !important;
   color: #b6bee3;
 }
 .bg-footer-theme .footer-link {

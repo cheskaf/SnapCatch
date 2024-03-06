@@ -276,8 +276,8 @@ button.list-group-item-primary.active {
 
 .btn-primary {
   color: #fff;
-  background-color: #7367f0;
-  border-color: #7367f0;
+  background-color: #046362;
+  border-color: #046362;
 }
 .btn-primary:hover {
   color: #fff !important;
@@ -309,9 +309,9 @@ button.list-group-item-primary.active {
 }
 
 .btn-label-primary {
-  color: #7367f0;
+  color: #046362;
   border-color: transparent;
-  background: #e9e7fd;
+  background: #cee7e0;
 }
 .btn-label-primary.waves-effect .waves-ripple {
   background: radial-gradient(rgba(115, 103, 240, 0.2) 0, rgba(115, 103, 240, 0.3) 40%, rgba(115, 103, 240, 0.4) 50%, rgba(115, 103, 240, 0.5) 60%, rgba(255, 255, 255, 0) 70%);

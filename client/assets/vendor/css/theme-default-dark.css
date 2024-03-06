@@ -60,11 +60,11 @@
 }
 
 body {
-  background: #25293c;
+  background: #0A021B;
 }
 
 .bg-body {
-  background: #25293c !important;
+  background: #0A021B !important;
 }
 
 .text-primary {
@@ -1283,8 +1283,8 @@ li.ui-timepicker-selected,
   -webkit-backdrop-filter: saturate(200%) blur(10px);
           backdrop-filter: saturate(200%) blur(10px);
   background: linear-gradient(180deg, rgba(37, 41, 60, 0.7) 44%, rgba(37, 41, 60, 0.43) 73%, rgba(37, 41, 60, 0));
-  -webkit-mask: linear-gradient(#25293c, #25293c 18%, transparent 100%);
-  mask: linear-gradient(#25293c, #25293c 18%, transparent 100%);
+  -webkit-mask: linear-gradient(#0A021B, #0A021B 18%, transparent 100%);
+  mask: linear-gradient(#0A021B, #0A021B 18%, transparent 100%);
 }
 
 .bg-menu-theme {
@@ -1381,11 +1381,11 @@ html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item:not(.acti
 }
 
 .layout-footer-fixed .layout-horizontal .bg-footer-theme {
-  background-color: #25293c !important;
+  background-color: #0A021B !important;
   color: #b6bee3;
 }
 .layout-footer-fixed .layout-wrapper:not(.layout-horizontal) .bg-footer-theme .footer-container {
-  background-color: #25293c !important;
+  background-color: #0A021B !important;
   color: #b6bee3;
 }
 .bg-footer-theme .footer-link {

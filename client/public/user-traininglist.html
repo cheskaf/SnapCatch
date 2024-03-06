@@ -66,6 +66,26 @@
     <script src="vendor/js/template-customizer.js"></script>
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="js/config.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..900&display=swap" rel="stylesheet">
+    <style>      
+      .space-grotesk-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 900;
+        font-style: normal;
+        font-size:3em;
+      }
+      
+      .space-grotesk-bold {
+        font-family: "Space Grotesk", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: normal;
+      }
+    </style>
   </head>
 
   <body>
@@ -86,7 +106,7 @@
                 <span class="app-brand-logo demo">
                   <img src="img/branding/logo.png" width="22"/>
                 </span>
-                <span class="app-brand-text demo menu-text fw-bold">SnapCatch</span>
+                <span class="app-brand-text demo menu-text space-grotesk-bold"></span>
               </a>
 
               <a
@@ -137,22 +157,24 @@
             <div class="container-xxl flex-grow-1 container-p-y">
               <!-- Help Center Header -->
               <div
-                class="help-center-header rounded d-flex flex-column justify-content-center align-items-center bg-help-center"
+                class="help-center-header rounded d-flex flex-column justify-content-center align-items-start bg-help-center"
               >
-                <h1 class="text-center">Customer Training</h1>
-                <p class="text-center px-3 mb-0 header-description">
-                  Are you ready to take your SnapCatch experience to the next level? 
-                  Join our comprehensive customer training sessions designed to empower 
-                  you with the knowledge and skills you need to maximize the potential 
-                  of SnapCatch for your business. 
-                </p>
+                <div class="d-flex flex-column align-items-center headercontainer">
+                  <img
+                    src="img/branding/snap.png"
+                    alt="SnapCatch" width="70" />
+                  <h1 class="space-grotesk-title">snapcatch</h1>
+                  <p class="text-left mb-0 header-description text-center">
+                    <span class="rounded-pill border border-2 px-4 py-2 d-inline-block text-center">Customer Training Registration</span>
+                  </p>
+                </div>
               </div>
               <!-- /Help Center Header -->
 
               <!-- Popular Articles -->
               <div class="help-center-popular-articles bg-help-center py-5">
                 <div class="container-xl">
-                  <h3 class="text-center my-4">Trainings</h3>
+                  <h3 class="text-center my-4 space-grotesk-bold">Trainings</h3>
                   <div class="row">
                     <div class="col-lg-10 mx-auto mb-4">
                       <div class="row">

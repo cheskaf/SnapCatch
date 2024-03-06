@@ -3697,7 +3697,7 @@ textarea.form-control-lg {
   --bs-card-spacer-x: 1.5rem;
   --bs-card-title-spacer-y: 0.875rem;
   --bs-card-border-width: 0;
-  --bs-card-border-color: #434968;
+  --bs-card-border-color: #1E1C35;
   --bs-card-border-radius: 0.375rem;
   --bs-card-box-shadow: 0 0.25rem 1.25rem rgba(15, 20, 34, 0.4);
   --bs-card-inner-border-radius: 0.375rem;
@@ -3707,7 +3707,7 @@ textarea.form-control-lg {
   --bs-card-cap-color: ;
   --bs-card-height: ;
   --bs-card-color: ;
-  --bs-card-bg: #2f3349;
+  --bs-card-bg: #1B1831;
   --bs-card-img-overlay-padding: 1.5rem;
   --bs-card-group-margin: 0.75rem;
   position: relative;
