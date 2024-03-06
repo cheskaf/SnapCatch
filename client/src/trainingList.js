@@ -11,6 +11,7 @@ const spAuth = require('node-sp-auth');
 const spRequest = require('sp-request');
 const requestPromise = require('request-promise');
 const qr = require('qrcode');
+const crypto = require('crypto');
 
 // Function to fetch data from the Training List
 async function fetchTrainingListData(siteUrl, credentials, trainingListTitle) {
@@ -34,6 +35,27 @@ async function fetchTrainingListData(siteUrl, credentials, trainingListTitle) {
     }
 }
 
+async function fetchTrainingItemById(id, siteUrl, credentials, trainingListTitle) {
+    try {
+        // Get authentication headers
+        const options = await spAuth.getAuth(siteUrl, credentials);
+        const headers = options.headers;
+        // Ensure headers accept JSON response
+        headers['Accept'] = 'application/json;odata=verbose';
+        
+        // Perform GET request to fetch training item by ID
+        const response = await requestPromise.get({
+            url: `${siteUrl}/_api/web/lists/getbytitle('${trainingListTitle}')/items(${id})`,
+            headers: headers,
+            json: true // Automatically parse JSON response
+        });
+
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}
+
 // Function to generate QR code
 async function generateQRCode(url) {
     try {
@@ -45,17 +67,28 @@ async function generateQRCode(url) {
     }
 }
 
-// Modify the generateUniqueUrls function to include QR code URL
+// Modify the generateUniqueUrls function to include a unique hashed value, training ID, and title in the URL
 async function generateUniqueUrls(data) {
     try {
         data.d.results.forEach(async (item) => {
-            const encodedID = encodeURIComponent(item.ID);
-            const encodedTitle = encodeURIComponent(item.Title);
+            const trainingId = item.ID;
+            const title = item.Title;
+
+            // Concatenate training ID and title
+            const concatenatedString = `${trainingId}-${title}`;
+
+            // Hash the concatenated string using SHA-256
+            const hashedValue = crypto.createHash('sha256').update(concatenatedString).digest('hex');
+
+            const encodedID = encodeURIComponent(trainingId);
+            const encodedTitle = encodeURIComponent(title);
+            const encodedHash = encodeURIComponent(hashedValue);
             const encodedDateFrom = encodeURIComponent(item.DateFrom);
             const encodedDateTo = encodeURIComponent(item.DateTo);
             const encodedLocation = encodeURIComponent(item.Location);
 
-            item.uniqueUrl = `/register?id=${encodedID}&title=${encodedTitle}&dateFrom=${encodedDateFrom}&dateTo=${encodedDateTo}&location=${encodedLocation}`;
+            // Construct unique URL with hashed value, training ID, and title
+            item.uniqueUrl = `/register/${encodedID}/${encodedTitle}/${encodedHash}?dateFrom=${encodedDateFrom}&dateTo=${encodedDateTo}&location=${encodedLocation}`;
 
             // Generate QR code URL
             const qrCodeUrl = await generateQRCode(item.uniqueUrl);
@@ -87,6 +120,7 @@ function formatDate(dateString) {
 
 module.exports = {
     fetchTrainingListData,
+    fetchTrainingItemById,
     generateUniqueUrls,
     generateQRCode,
     initializeTrainingListData,
