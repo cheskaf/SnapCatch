@@ -72,6 +72,9 @@
     <script src="vendor/js/template-customizer.js"></script>
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="js/config.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
   </head>
 
   <body>
@@ -85,42 +88,9 @@
           class="layout-menu menu-vertical menu bg-menu-theme"
         >
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="/../../../" class="app-brand-link">
               <span class="app-brand-logo demo">
-                <svg
-                  width="32"
-                  height="22"
-                  viewBox="0 0 32 22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M0.00172773 0V6.85398C0.00172773 6.85398 -0.133178 9.01207 1.98092 10.8388L13.6912 21.9964L19.7809 21.9181L18.8042 9.88248L16.4951 7.17289L9.23799 0H0.00172773Z"
-                    fill="#7367F0"
-                  />
-                  <path
-                    opacity="0.06"
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M7.69824 16.4364L12.5199 3.23696L16.5541 7.25596L7.69824 16.4364Z"
-                    fill="#161616"
-                  />
-                  <path
-                    opacity="0.06"
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M8.07751 15.9175L13.9419 4.63989L16.5849 7.28475L8.07751 15.9175Z"
-                    fill="#161616"
-                  />
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M7.77295 16.3566L23.6563 0H32V6.88383C32 6.88383 31.8262 9.17836 30.6591 10.4057L19.7824 22H13.6938L7.77295 16.3566Z"
-                    fill="#7367F0"
-                  />
-                </svg>
+                <img src="img/branding/logo.png" width="22"/>
               </span>
               <span class="app-brand-text demo menu-text fw-bold">SnapCatch</span>
             </a>
@@ -342,86 +312,54 @@
                     class="d-flex justify-content-between align-items-center row pb-2 gap-3 gap-md-0"
                   >
                     <div class="col-md-4 user_role">
-                      <select id="UserRole" class="form-select text-capitalize">
-                        <option value="">Select Training</option>
-                        <option value="Copilot Training">Copilot Training</option>
-                        <option value="Author">Author</option>
-                        <option value="Editor">Editor</option>
+                      <select id="selectTraining" class="form-select text-capitalize">
+                        <option value="">All Trainings</option>
+                        <% trainingListData.d.results.forEach(item => { %>
+                          $('#selectTraining').append('<option value="<%= item.Id %>"><%= item.Title %></option>');
+                        <% }); %>
                       </select>
                     </div>
-                    <div class="col-md-4 user_plan">
+                    <!-- Set Location and Schedule based on the selected training using the training id and the linked location and datefrom and dateto attibute from the traininglist -->
+                    <script>
+                      $('#selectTraining').on('change', function() {
+                        var selectedTraining = $(this).val();
+                        var selectedTrainingData = trainingListData.d.results.find(item => item.Id == selectedTraining);
+                        $('#locationLabel').text(selectedTrainingData.Location);
+                        $('#scheduleLabel').text(selectedTrainingData.DateFrom + ' - ' + selectedTrainingData.DateTo);
+                      });
+                    </script>
+                    <div class="col user_plan">
                       <i class="ti ti-map-pin ti-xs mb-1"></i>
-                      <span>Location</span>
+                      <span id="locationLabel">Location</span>
                     </div>
-                    <div class="col-md-4 user_status">
+                    <div class="col user_status">
                       <i class="ti ti-calendar ti-xs mb-1"></i>
-                      <span>Schedule</span>
+                      <span id="scheduleLabel">Schedule</span>
+                    </div>
+                    <div class="col user_status d-flex justify-content-end">
+                      <button
+                        class="dt-button add-new btn btn-primary"
+                        tabindex="0"
+                        aria-controls="DataTables_Table_0"
+                        type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasAddUser"
+                      >
+                        <span class="d-inline-block"
+                          ><i class="ti ti-plus me-0 me-sm-1 ti-xs"></i
+                          ><span class="d-none d-sm-inline-block"
+                            >New Registration</span
+                          ></span
+                        >
+                      </button>
                     </div>
                   </div>
                 </div>
                 <div class="card-datatable table-responsive">
                   <div
                     id="DataTables_Table_0_wrapper"
-                    class="dataTables_wrapper dt-bootstrap5 no-footer"
+                    class="dataTables_wrapper dt-bootstrap5 no-footer px-3"
                   >
-                    <div class="row me-2">
-                      <div class="col-md-2">
-                        <div class="me-3">
-                          <div
-                            class="dataTables_length"
-                            id="DataTables_Table_0_length"
-                          >
-                            <label>
-                              <select
-                                name="DataTables_Table_0_length"
-                                aria-controls="DataTables_Table_0"
-                                class="form-select"
-                              >
-                                <option value="10">10</option>
-                                <option value="25">25</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                              </select>
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-10">
-                        <div
-                          class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0"
-                        >
-                          <div
-                            id="DataTables_Table_0_filter"
-                            class="dataTables_filter"
-                          >
-                            <label
-                              ><input
-                                type="search"
-                                class="form-control me-0 me-md-3"
-                                placeholder="Search.."
-                                aria-controls="DataTables_Table_0"
-                            /></label>
-                          </div>
-                          <div class="dt-buttons">
-                            <button
-                              class="dt-button add-new btn btn-primary"
-                              tabindex="0"
-                              aria-controls="DataTables_Table_0"
-                              type="button"
-                              data-bs-toggle="offcanvas"
-                              data-bs-target="#offcanvasAddUser"
-                            >
-                              <span
-                                ><i class="ti ti-plus me-0 me-sm-1 ti-xs"></i
-                                ><span class="d-none d-sm-inline-block"
-                                  >New Registration</span
-                                ></span
-                              >
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                     <table
                       class="datatables-users table border-top dataTable no-footer dtr-column"
                       id="DataTables_Table_0"
@@ -495,7 +433,7 @@
                       </thead>
                       <tbody>
                         <% registrationListData.d.results.forEach(function(item) { %>
-                        <tr>
+                        <tr class="<%= item.TrainingScheduleId %>">
                           <td
                             class="control dtr-hidden"
                             style="display: none"
@@ -702,103 +640,6 @@
                         <% }); %>
                       </tbody>
                     </table>
-                    <div class="row mx-2">
-                      <div class="col-sm-12 col-md-6">
-                        <div
-                          class="dataTables_info"
-                          id="DataTables_Table_0_info"
-                          role="status"
-                          aria-live="polite"
-                        >
-                          Showing 1 to 10 of 49 entries
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6">
-                        <div
-                          class="dataTables_paginate paging_simple_numbers"
-                          id="DataTables_Table_0_paginate"
-                        >
-                          <ul class="pagination">
-                            <li
-                              class="paginate_button page-item previous disabled"
-                              id="DataTables_Table_0_previous"
-                            >
-                              <a
-                                href="#"
-                                aria-controls="DataTables_Table_0"
-                                data-dt-idx="0"
-                                tabindex="0"
-                                class="page-link"
-                                >Previous</a
-                              >
-                            </li>
-                            <li class="paginate_button page-item active">
-                              <a
-                                href="#"
-                                aria-controls="DataTables_Table_0"
-                                data-dt-idx="1"
-                                tabindex="0"
-                                class="page-link"
-                                >1</a
-                              >
-                            </li>
-                            <li class="paginate_button page-item">
-                              <a
-                                href="#"
-                                aria-controls="DataTables_Table_0"
-                                data-dt-idx="2"
-                                tabindex="0"
-                                class="page-link"
-                                >2</a
-                              >
-                            </li>
-                            <li class="paginate_button page-item">
-                              <a
-                                href="#"
-                                aria-controls="DataTables_Table_0"
-                                data-dt-idx="3"
-                                tabindex="0"
-                                class="page-link"
-                                >3</a
-                              >
-                            </li>
-                            <li class="paginate_button page-item">
-                              <a
-                                href="#"
-                                aria-controls="DataTables_Table_0"
-                                data-dt-idx="4"
-                                tabindex="0"
-                                class="page-link"
-                                >4</a
-                              >
-                            </li>
-                            <li class="paginate_button page-item">
-                              <a
-                                href="#"
-                                aria-controls="DataTables_Table_0"
-                                data-dt-idx="5"
-                                tabindex="0"
-                                class="page-link"
-                                >5</a
-                              >
-                            </li>
-                            <li
-                              class="paginate_button page-item next"
-                              id="DataTables_Table_0_next"
-                            >
-                              <a
-                                href="#"
-                                aria-controls="DataTables_Table_0"
-                                data-dt-idx="6"
-                                tabindex="0"
-                                class="page-link"
-                                >Next</a
-                              >
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
                 <!-- Offcanvas to add new user -->
@@ -1042,5 +883,7 @@
     <script src="js/main.js"></script>
     <script src="vendor/js/main.js"></script>
     <script src="../../../vendor/js/bootstrap-validation.js"></script>
+    <script src="vendor/js/datatables.js"></script>
+  
   </body>
 </html>
