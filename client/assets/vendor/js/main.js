@@ -40,9 +40,10 @@ $(document).ready(function () {
     });
     
     // Event listener for clicking the addNewRegistrationSubmit button
-    $('#addNewRegistrationSubmit').click(function () {
+    $("#addNewRegistrationForm").submit(function (event) {
+        event.preventDefault(); // Prevent default form submission behavior
         // Extract form data including file
-        var formData = extractFormData(); // Invoke the function
+        var formData = extractAdminFormData(); // Invoke the function
         
         console.log("Extracted Form Data:", formData); // Log the FormData object
 
@@ -287,6 +288,49 @@ function extractFormData() {
 
         // Extract training details from hidden input fields
         let trainingId = $("#trainingId").val();
+
+        // Construct the form data object
+        let formData = new FormData();
+        formData.append('Title', title);
+        formData.append('LastName', lastName);
+        formData.append('FirstName', firstName);
+        formData.append('Email', email);
+        formData.append('ContactNumber', contactNumber);
+        formData.append('CompanyName', companyName);
+        formData.append('TrainingScheduleId', trainingId);
+        formData.append('file', file); // Append the file to the FormData object
+
+        return formData;
+    } catch (error) {
+        handleSubmissionError(error);
+        // Log and handle the error
+        console.error("Error extracting form data:", error);
+        alert("An error occurred while submitting the form. Please try again later.");
+    }
+}
+
+function extractAdminFormData() {
+    try {
+        // Extract data and trim string inputs
+        let title = $("#lastNameAdd").val();
+        let lastName = $("#lastNameAdd").val();
+        let firstName = $("#firstNameAdd").val();
+        let email = $("#emailAdd").val();
+        let contactNumber = $("#contactNumberAdd").val();
+        let companyName = $("#companyNameAdd").val();
+
+        // Extract file from input field
+        const file = $('#fileInputAdd')[0].files[0];
+
+        console.log("Last Name:", lastName);
+        console.log("First Name:", firstName);
+        console.log("Email:", email);
+        console.log("Contact Number:", contactNumber);
+        console.log("Company Name:", companyName);
+        console.log("File:", file); // Log the file object
+
+        // Extract training details from hidden input fields
+        let trainingId = $("#trainingIdAdd").val();
 
         // Construct the form data object
         let formData = new FormData();
