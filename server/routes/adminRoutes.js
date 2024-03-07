@@ -18,7 +18,7 @@ const credentials = {
 };
 
 // Import required modules
-const { initializeRegistrationListData, formatDate } = require('../../client/assets/js/admin-registrations');
+const { initializeRegistrationListData, formatDate, formatAdminDate } = require('../../client/assets/js/admin-registrations');
 
 // Initialize training list data when the server starts
 initializeRegistrationListData(siteUrl, credentials, trainingListTitle)
@@ -73,6 +73,8 @@ router.get('/manage/trainings', async (req, res) => {
             item.formattedDateCreated = formatDate(item.Created);
             item.formattedDateFrom = formatDate(item.DateFrom);
             item.formattedDateTo = formatDate(item.DateTo);
+            item.adminDateFrom = formatAdminDate(item.DateFrom);
+            item.adminDateTo = formatAdminDate(item.DateTo);
             item.initials = item.Title.charAt(0);
         });
         res.render('admin-training', { trainingListData });

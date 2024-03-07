@@ -65,6 +65,12 @@ function formatDate(dateString) {
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true});
 }
 
+// Define a function to format the date into the required format
+function formatAdminDate(date) {
+    const formattedDate = new Date(date).toISOString().slice(0, 16);
+    return formattedDate.replace('T', ' ');
+}
+
 // Function to delete a registration
 async function deleteRegistration(siteUrl, credentials, registrationListTitle, id) {
     try {
@@ -131,6 +137,7 @@ module.exports = {
     fetchRegistrationListData,
     initializeRegistrationListData,
     formatDate,
+    formatAdminDate,
     deleteRegistration,
     deleteListItem,
     updateListItem

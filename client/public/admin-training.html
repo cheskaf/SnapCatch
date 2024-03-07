@@ -565,11 +565,11 @@
                                   <div class="row g-2">
                                     <div class="col mb-0">
                                       <label for="dobBasic" class="form-label">Start Date</label>
-                                      <input type="datetime-local" id="dateFrom" class="form-control" placeholder="DD / MM / YY" value="<%= item.DateFrom %>"/>
+                                      <input type="datetime-local" id="dateFrom" class="form-control" placeholder="DD / MM / YY" value="<%= item.adminDateFrom %>"/>
                                     </div>
                                     <div class="col mb-0">
                                       <label for="dobBasic" class="form-label">End Date</label>
-                                      <input type="datetime-local" id="dateTo" class="form-control" placeholder="DD / MM / YY" value="<%= item.DateTo %>" />
+                                      <input type="datetime-local" id="dateTo" class="form-control" placeholder="DD / MM / YY" value="<%= item.adminDateTo %>" />
                                     </div>
                                   </div>
                                 </div>
@@ -613,15 +613,15 @@
                       method="post" enctype="multipart/form-data" onsubmit="return false" novalidate
                     >
                       <div class="mb-3 fv-plugins-icon-container">
-                        <label class="form-label" for="title"
+                        <label class="form-label" for="titleAdmin"
                           >Title</label
                         >
                         <input
                           type="text"
                           class="form-control"
-                          id="title"
+                          id="titleAdmin"
                           placeholder="XYZ Training"
-                          name="userFullname"
+                          name="titleAdmin"
                           aria-label="XYZ Training"
                           required
                         />
@@ -630,16 +630,16 @@
                         ></div>
                       </div>
                       <div class="mb-3 fv-plugins-icon-container">
-                        <label class="form-label" for="location"
+                        <label class="form-label" for="locationAdmin"
                           >Location</label
                         >
                         <input
                           type="text"
-                          id="location"
+                          id="locationAdmin"
                           class="form-control"
                           placeholder="Virtual - MS Teams"
                           aria-label="john.doe@example.com"
-                          name="location"
+                          name="locationAdmin"
                           required
                         />
                         <div
@@ -647,30 +647,30 @@
                         ></div>
                       </div>
                       <div class="mb-3">
-                        <label class="form-label" for="dateFrom"
+                        <label class="form-label" for="dateFromAdmin"
                           >Start Date</label
                         >
                         <input
                           type="datetime-local"
-                          id="dateFrom"
+                          id="dateFromAdmin"
                           class="form-control"
                           placeholder="January 1, 2024"
                           aria-label="January 1, 2024"
-                          name="dateFrom"
+                          name="dateFromAdmin"
                           required
                         />
                       </div>
                       <div class="mb-3">
-                        <label class="form-label" for="dateTo"
+                        <label class="form-label" for="dateToAdmin"
                           >End Date</label
                         >
                         <input
                           type="datetime-local"
-                          id="dateTo"
+                          id="dateToAdmin"
                           class="form-control"
                           placeholder="January 3, 2024"
                           aria-label="January 3, 2024"
-                          name="dateTo"
+                          name="dateToAdmin"
                           required
                         />
                       </div>

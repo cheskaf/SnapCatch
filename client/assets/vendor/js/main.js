@@ -42,6 +42,7 @@ $(document).ready(function () {
     // Event listener for clicking the addNewRegistrationSubmit button
     $("#addNewRegistrationForm").submit(function (event) {
         event.preventDefault(); // Prevent default form submission behavior
+
         // Extract form data including file
         var formData = extractAdminFormData(); // Invoke the function
         
@@ -66,8 +67,9 @@ $(document).ready(function () {
         });
     });
     
-    // Event listener for clicking the addNewTrainingSubmit button
-    $('#addNewTrainingSubmit').click(function () {
+    $("#addNewTrainingForm").submit(function (event) {
+        event.preventDefault(); // Prevent default form submission behavior
+
         // Extract form data including file
         var formData = extractTrainingFormData(); // Invoke the function
         
@@ -355,10 +357,10 @@ function extractAdminFormData() {
 function extractTrainingFormData() {
     try {
         // Extract data and trim string inputs
-        let title = $("#title").val();
-        let dateFrom = $("#dateFrom").val();
-        let dateTo = $("#dateTo").val();
-        let location = $("#location").val();
+        let title = $("#titleAdmin").val();
+        let dateFrom = $("#dateFromAdmin").val();
+        let dateTo = $("#dateToAdmin").val();
+        let location = $("#locationAdmin").val();
 
         console.log("Title:", title);
         console.log("Date From:", dateFrom);
