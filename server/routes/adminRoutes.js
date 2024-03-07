@@ -77,7 +77,19 @@ router.get('/manage/trainings', async (req, res) => {
             item.adminDateTo = formatAdminDate(item.DateTo);
             item.initials = item.Title.charAt(0);
         });
-        res.render('admin-training', { trainingListData });
+
+        // Fetch registration list data
+        const registrationListData = await initializeRegistrationListData(siteUrl, credentials, listTitle);
+
+        // Filter registrations for the specific training session being displayed
+        const trainingId = req.params.trainingId; // Assuming you're passing the training ID in the request params
+        console.log('Training ID:', trainingId);
+        const filteredRegistrations = registrationListData.d.results.filter(registration => registration.TrainingId === trainingId);
+
+        // Extract names of registrants
+        const registrantNames = filteredRegistrations.map(registration => `${registration.FirstName} ${registration.LastName}`);
+        
+        res.render('admin-training', { trainingListData, registrantNames });
     } catch (error) {
         console.error('Error fetching training list data:', error);
         res.status(500).send('Internal server error');

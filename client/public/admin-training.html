@@ -484,19 +484,30 @@
                                   aria-label="Close"
                                 ></button>
                               </div>
-                              <div class="modal-body text-center">
-                                <div class="d-flex align-items-center justify-content-center">
-                                  <div class="avatar mb-3 pe-none">
-                                    <span
-                                      class="avatar-initial rounded-circle bg-label-primary"
-                                      ><%= item.Id %></span
-                                    >
+                              <div class="modal-body">
+                                <div class="text-center">
+                                  <div class="d-flex align-items-center justify-content-center">
+                                    <div class="avatar mb-3 pe-none">
+                                      <span
+                                        class="avatar-initial rounded-circle bg-label-secondary"
+                                        ><%= item.Id %></span
+                                      >
+                                    </div>
                                   </div>
+                                  <h5><%= item.Title %></h5>
+                                  <p><%= item.Location %></p>
+                                  <p class="mb-0"><%= item.formattedDateFrom %> to </p>
+                                  <p class="mb-0"><%= item.formattedDateTo %></p>
                                 </div>
-                                <h5><%= item.Title %></h5>
-                                <p><%= item.Location %></p>
-                                <p class="mb-0"><%= item.formattedDateFrom %> to </p>
-                                <p class="mb-0"><%= item.formattedDateTo %></p>
+                                <hr>
+                                <div class="text-left">
+                                  <p><strong><%= registrantNames.length %> Participants</strong></p>
+                                  <ul style="text-align: left !important;">
+                                    <% registrantNames.forEach(name => { %>
+                                      <li><%= name %></li>
+                                    <% }); %>
+                                  </ul>
+                                </div>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
@@ -677,7 +688,7 @@
                   <div class="modal-content">
                     <div class="modal-body">
                       <h5 class="modal-title mb-3" id="successModalLabel">Success!</h5>
-                      Thank you for registering! Your submission has been successful. An email with further details and a link will be sent shortly.
+                      Training added successfully!
                     </div>
                     <div class="modal-footer border border-0">
                       <button type="button" class="btn btn-label-secondary waves-effect alertsuccess" data-bs-dismiss="modal">Close</button>
