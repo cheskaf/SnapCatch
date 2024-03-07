@@ -114,10 +114,12 @@ const transporter = nodemailer.createTransport({
 
 async function sendEmailNotification(name, email, data) {
     try {
-        console.log('Sending email with data:', data); // Log data being passed to the email function
-
         const mailOptions = {
-            from: '"SnapCatch" <reg.training209@gmail.com>',
+            from: {
+                name: 'SnapCatch Team',
+                address: 'reg.training209@gmail.com',
+                icon: 'img/branding/snapcatch.png' // Customize sender icon
+            },
             to: email,
             subject: 'SnapCatch: Registration Successful',
             html: emailTemplate(name, email, data) // Use HTML instead of plain text
@@ -128,5 +130,6 @@ async function sendEmailNotification(name, email, data) {
         throw error;
     }
 }
+
 
 module.exports = { createListItem, uploadAttachment };
