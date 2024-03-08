@@ -470,28 +470,20 @@
                             </div>
                           </div>
                         </div>
-                        
+
                         <!-- View Modal -->
                         <div class="modal fade" id="viewModal_<%= item.Id %>" tabindex="-1" aria-hidden="true">
                           <div class="modal-dialog modal-sm" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
                                 <h5 class="modal-title" id="viewModalLabel">View</h5>
-                                <button
-                                  type="button"
-                                  class="btn-close"
-                                  data-bs-dismiss="modal"
-                                  aria-label="Close"
-                                ></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <div class="modal-body">
                                 <div class="text-center">
                                   <div class="d-flex align-items-center justify-content-center">
                                     <div class="avatar mb-3 pe-none">
-                                      <span
-                                        class="avatar-initial rounded-circle bg-label-secondary"
-                                        ><%= item.Id %></span
-                                      >
+                                      <span class="avatar-initial rounded-circle bg-label-secondary"><%= item.Id %></span>
                                     </div>
                                   </div>
                                   <h5><%= item.Title %></h5>
@@ -501,22 +493,32 @@
                                 </div>
                                 <hr>
                                 <div class="text-left">
-                                  <p><strong><%= registrantNames.length %> Participants</strong></p>
-                                  <ul style="text-align: left !important;">
-                                    <% registrantNames.forEach(name => { %>
-                                      <li><%= name %></li>
+                                  <% const filteredRegistrations = registrationListData.d.results.filter(registration => registration.TrainingScheduleId === item.Id); %>
+                                  <p><strong><%= filteredRegistrations.length %> Participants</strong></p>
+                                  <ol style="text-align: left !important;">
+                                    <% filteredRegistrations.forEach(registration => { %>
+                                      <li class="mb-3"> 
+                                          <div class="row">
+                                            <div class="col">
+                                              <span class="mb-0"><%= registration.FirstName %> <%= registration.LastName %></span>
+                                              <small><%= registration.Email %></small>
+                                            </div>
+                                            <div class="col-auto">
+                                              <small class="py-2 px-1 bg-label-secondary rounded">#<%= registration.Id %></small> 
+                                            </div>
+                                          </div>
+                                      </li>
                                     <% }); %>
-                                  </ul>
+                                  </ol>
                                 </div>
                               </div>
                               <div class="modal-footer">
-                                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
-                                  Close
-                                </button>
+                                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
                               </div>
                             </div>
                           </div>
                         </div>
+
                         
                         <!-- Edit Modal -->
                         <div class="modal fade" id="editModal_<%= item.Id %>" tabindex="-1" aria-hidden="true">

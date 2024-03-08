@@ -228,67 +228,83 @@
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row g-4 mb-4">
-                <div class="col-sm-12 col-xl-3">
-                  <div class="row">
-                    <div class="col mb-3">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="d-flex align-items-start justify-content-between">
-                            <div class="content-left">
-                              <span>Registrations</span>
-                              <div class="d-flex align-items-center my-1">
-                                <h4 class="mb-0 me-2">52</h4>
-                                <span class="text-success">(+29%)</span>
-                              </div>
-                              <span>Total Registrations</span>
-                            </div>
-                            <span class="badge bg-label-primary rounded p-2">
-                              <i class="ti ti-user ti-sm"></i>
-                            </span>
+                <div class="col-sm-6 col-xl-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex align-items-start justify-content-between">
+                        <div class="content-left">
+                          <span>Registrations</span>
+                          <div class="d-flex align-items-center my-1">
+                            <h4 class="mb-0 me-2">52</h4>
+                            <span class="text-success">(+29%)</span>
                           </div>
+                          <span>Total Registrations</span>
                         </div>
-                      </div>
-                    </div>
-                    <div class="col mb-3">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="d-flex align-items-start justify-content-between">
-                            <div class="content-left">
-                              <span>Registrations</span>
-                              <div class="d-flex align-items-center my-1">
-                                <h4 class="mb-0 me-2">11</h4>
-                                <span class="text-success">(+18%)</span>
-                              </div>
-                              <span>Registrations Today</span>
-                            </div>
-                            <span class="badge bg-label-primary rounded p-2">
-                              <i class="ti ti-user-plus ti-sm"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="d-flex align-items-start justify-content-between">
-                            <div class="content-left">
-                              <span>Top Training Schedule</span>
-                              <div class="d-flex align-items-center my-1">
-                                <h5 class="mb-0 me-2">Microsoft Copilot Training</h5>
-                              </div>
-                              <span><span class="badge bg-label-primary rounded p-2 me-2">15</span>Registrations</span>
-                            </div>
-                            <span class="badge bg-label-primary rounded p-2">
-                              <i class="ti ti-user ti-sm"></i>
-                            </span>
-                          </div>
-                        </div>
+                        <span class="badge bg-label-primary rounded p-2">
+                          <i class="ti ti-user ti-sm"></i>
+                        </span>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-12 col-xl-5">
+                <div class="col-sm-6 col-xl-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex align-items-start justify-content-between">
+                        <div class="content-left">
+                          <span>Registrations</span>
+                          <div class="d-flex align-items-center my-1">
+                            <h4 class="mb-0 me-2">11</h4>
+                            <span class="text-success">(+18%)</span>
+                          </div>
+                          <span>Registrations Today</span>
+                        </div>
+                        <span class="badge bg-label-danger rounded p-2">
+                          <i class="ti ti-user-plus ti-sm"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex align-items-start justify-content-between">
+                        <div class="content-left">
+                          <span>Top Training Schedule</span>
+                          <div class="d-flex align-items-center my-1">
+                            <h5 class="mb-0 me-2">Microsoft Copilot Training</h5>
+                          </div>
+                          <span>Last week analytics</span>
+                        </div>
+                        <span class="badge bg-label-success rounded p-2">
+                          <i class="ti ti-user-check ti-sm"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex align-items-start justify-content-between">
+                        <div class="content-left">
+                          <span>Most Active Registrants</span>
+                          <div class="d-flex align-items-center my-1">
+                            <h5 class="mb-0 me-2">XYZ Company</h5>
+                          </div>
+                          <span>Last week analytics</span>
+                        </div>
+                        <span class="badge bg-label-warning rounded p-2">
+                          <i class="ti ti-user-exclamation ti-sm"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row g-4 mb-4">
+                <div class="col-sm-12 col-xl-6">
                   <div class="card">
                     <div class="card-header d-flex justify-content-between">
                       <div>
@@ -346,7 +362,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-12 col-xl-4">
+                <div class="col-sm-12 col-xl-6">
                   <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                       <div>
@@ -660,6 +676,7 @@
                                   data-bs-toggle="modal"
                                   data-bs-target="#viewModal_<%= item.Id %>"
                                   class="dropdown-item"
+                                  data-training-id="<%= item.Id %>"
                                   >View</a
                                 >
                               </div>
@@ -694,7 +711,7 @@
                         </div>
                         
                         <!-- View Modal -->
-                        <div class="modal fade" id="viewModal_<%= item.Id %>" tabindex="-1" aria-hidden="true">
+                        <div class="modal fade viewTrainingModal" id="viewModal_<%= item.Id %>" tabindex="-1" aria-hidden="true">
                           <div class="modal-dialog modal-sm" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -706,7 +723,7 @@
                                   aria-label="Close"
                                 ></button>
                               </div>
-                              <div class="modal-body text-center">
+                              <div class="modal-body modalBodyView text-center">
                                 <div class="d-flex align-items-center justify-content-center">
                                   <div class="avatar mb-3 pe-none">
                                     <span

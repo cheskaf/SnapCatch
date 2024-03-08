@@ -27,7 +27,7 @@ initializeRegistrationListData(siteUrl, credentials, trainingListTitle)
         // Now you can use the training list data in your application as needed
     })
     .catch(err => {
-        console.error('Error initializing training list data:', err);
+        console.error('Error initializing registration list data:', err);
     });
 
 // Import required modules
@@ -81,15 +81,7 @@ router.get('/manage/trainings', async (req, res) => {
         // Fetch registration list data
         const registrationListData = await initializeRegistrationListData(siteUrl, credentials, listTitle);
 
-        // Filter registrations for the specific training session being displayed
-        const trainingId = req.params.trainingId; // Assuming you're passing the training ID in the request params
-        console.log('Training ID:', trainingId);
-        const filteredRegistrations = registrationListData.d.results.filter(registration => registration.TrainingId === trainingId);
-
-        // Extract names of registrants
-        const registrantNames = filteredRegistrations.map(registration => `${registration.FirstName} ${registration.LastName}`);
-        
-        res.render('admin-training', { trainingListData, registrantNames });
+        res.render('admin-training', { trainingListData, registrationListData });
     } catch (error) {
         console.error('Error fetching training list data:', error);
         res.status(500).send('Internal server error');
